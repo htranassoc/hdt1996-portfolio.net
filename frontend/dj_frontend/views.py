@@ -7,7 +7,7 @@ from rest_framework.views import APIView
 from .serializer import Note_Serializer, Room_Serializer, CreateRoomSerializer, UpdateRoomSerializer, VideoSerializer
 from django.views import View
 from datetime import datetime
-from stockserver.settings import DEBUG
+from backend.settings import DEBUG
 import json
 
 class UpdateView(APIView):
