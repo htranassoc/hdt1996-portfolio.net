@@ -1,0 +1,10 @@
+uWSGI
+django==3.1.2
+emoji
+regex
+psycopg2-binary
+Pillow
+djangorestframework
+django-cors-headers
+requests
+

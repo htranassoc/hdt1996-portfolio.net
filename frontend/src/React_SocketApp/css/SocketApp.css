@@ -1,0 +1,150 @@
+.msghistory{
+    display:flex;
+    background-color: rgb(204, 204, 247);
+    padding:25px;
+    
+    flex-wrap:wrap;
+    word-break: break-all;
+    border-bottom:2px solid black;
+}
+.msghistory-user{
+    display:flex;
+    justify-content: space-between;
+    width:100%;
+    margin:25px;
+    font-size:45px;
+    font-weight: bolder;
+}
+
+.msghistory-message{
+    font-size:45px;
+    display:flex;
+    background-color:rgb(191, 191, 243);
+    padding:25px;
+    width:100%;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.msghistory-message .download{
+    margin-left:auto;
+}
+
+.SocketApp{
+    display:flex;
+    flex-wrap:wrap;
+    background-color: rgb(51, 65, 145);
+    width:100%;
+    height:100%;
+    overflow-y:scroll
+
+}
+.ChatRoom{
+    display:flex;
+    flex-direction: column;
+    width:100%;
+    position:relative;
+    padding:25px
+}
+.NewMessage{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: center;
+    align-items: center;
+    height:100px;
+}
+.NewMessage #Input_Message{
+    font-size:30px;
+    flex-basis:500px;
+    flex-grow: 9999;
+    max-width:100%;
+    text-align: center;
+    font-size:60px;
+    height:100px;
+    background-color: rgb(159, 253, 239);
+    color:black;
+    border:none;
+}
+#Input_Message::placeholder{
+    color:rgb(146, 146, 150);
+}
+
+.NewMessage button{
+    display:flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    font-size:50px;
+    height: 100%;
+    padding:20px;
+    background-color: rgb(87, 255, 227);
+    flex-grow:1;
+    border:none
+}
+.NewMessage button div{
+    width:410px;
+}
+.NewMessage .InputFileContainer{
+    display:flex;
+    background-color: rgb(254, 255, 255);
+    max-width:100%;
+    color:transparent;
+    flex-grow:1;
+}
+.NewMessage .InputFileContainer input[type = 'file']::-webkit-file-upload-button{
+    font-size:50px;
+    flex-grow: 1;
+    height:100px;
+    padding:20px;
+    flex-wrap: wrap;
+    max-width: 100%;
+    border:none;
+    background-color: rgb(254, 255, 255);
+    color:rgb(3, 3, 156);
+}
+
+.Login{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width:90%;
+    height:200px;
+    margin:auto;
+    flex-wrap:wrap;
+}
+.Login input {
+    text-align: center;
+    font-size:70px;
+    flex-grow:9999;
+    max-width:100%;
+    padding:15px;
+    background-color: rgb(177, 233, 255);
+}
+.Login input::placeholder{
+    color:rgb(68, 68, 68);
+    font-size:70px;
+}
+
+.Login button{
+    display:flex;
+    flex-grow:1;
+    max-width:100%;
+    align-items: center;
+    justify-content: center;
+    padding:15px;
+    background-color: rgb(92, 253, 200);
+}
+.Login button div{
+    width:250px;
+    font-size:70px;
+}
+
+.progress_bar{
+    display:flex;
+    background-color: white;
+    width:100%;
+    height:40px;
+    align-items: center;
+}
+.progress_slider{
+    height:75%;
+    background-color: blue;
+}

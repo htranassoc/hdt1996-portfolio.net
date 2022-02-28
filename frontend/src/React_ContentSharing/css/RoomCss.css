@@ -1,0 +1,502 @@
+.hidden{
+    display:none
+}
+.CSHomePage{
+    display:flex;
+    /* border-style: double; */
+}  
+.CSBackground{
+    display:flex;
+    background-color: rgb(43, 41, 41);
+    width:100%;
+    height:100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.CSHomePage .div1{
+    display:flex;
+    font-size:60px;
+    font-weight: bold;
+    border-radius: 10px;
+    background-color: rgb(123, 150, 161);
+/*     border-style:dotted; */
+    height:150px;
+}
+
+.div1 div{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width:500px;
+    height:100%;
+/*     border-style:dotted; */
+}
+.CSHomePage .div2{
+    display:flex;
+    flex-direction: column;
+    font-weight:bold;
+    background-color: rgb(109, 151, 149);
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+/*     border-style:dashed; */
+}
+
+.CSHomePage div{
+    margin-inline:10px;
+}
+.div2 .author{
+    display:flex;
+    justify-content: right;
+    color:rgb(50, 86, 107);
+    font-size:15px;
+    width:500px;
+
+}
+.div2 .join{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width:500px;
+    height:100px;
+/*     border-style:dotted; */
+    font-size:60px;
+}
+
+/* #################################################################################################### PickRoom ############################################################################################################ */
+.PickRoom{
+    display:flex;
+    height:100%;
+    width:100%;
+    background-color:rgb(43, 41, 41);
+    justify-content: center;
+    align-items: center;
+}
+.PickRoom div{
+    display:flex;
+    justify-content: center;
+    /* border-style: dotted; */
+    border-color: white;
+    height:100px;
+}
+.PickRoom #codesubmission{
+    width:900px;
+    height:100%;
+    font-size:35px;
+    text-align: center;
+    border-radius:10px;
+    background-color: rgb(238, 231, 216);
+}
+.PickRoom #submit{
+    height:100%;
+    width:200px;
+    font-size:40px;
+    text-align: center;
+    border-radius:10px;
+    font-weight: bold;
+    background-color: rgb(243, 203, 150);
+}
+
+.PickRoom input{
+    padding:5px;
+}
+.WrongCode::placeholder{
+    color:red
+}
+
+.Access_Error{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    height:100%;
+    background-color:rgb(51, 49, 49);
+}
+.Access_Error div{
+    display:flex;
+    color:rgb(241, 16, 16);
+    width:1000px;
+    height:100px;
+    align-items: center;
+    justify-content: center;
+    font-size:50px;
+    background-color:rgb(39, 31, 31);
+
+}
+.error_image{
+    width:1000px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.CreateRoom{
+    background-color: white;
+    height:100%;
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(43, 41, 41);
+}
+
+.CreateRoom div{
+    display:flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    background-color: rgb(205, 205, 226);
+    width:500px;
+    height:100px;
+}
+.CreateRoom .PauseSettings{
+    flex-direction: row;
+    height:70px;
+}
+.PauseSettings div{
+    align-items: center;
+    height:70px;
+    background-color: rgb(172, 209, 197);
+}
+.PauseSettings div input{
+    width:20px;
+    height:20px;
+    margin-bottom:5px;
+}
+
+.CreateRoom .InputField{
+    flex-direction: row;
+    width:500px;
+    height:60px;
+    z-index: 100;
+
+}
+
+.InputField .SkipTitle{
+    font-size:25px;
+    height:60px;
+    font-weight:bold;
+    width:88%;
+    background-color: rgb(175, 194, 219);
+    align-items: center;
+}
+
+.InputField .Input_Number{
+    height:60px;
+    display:flex;
+    width:12%;
+    align-items: center;
+}
+
+
+div .NumberSkips{
+    text-align: center;
+    width:50px;
+    height:30px;
+    font-size:20px;
+    background:linear-gradient(to right, rgb(205, 205, 226) 65%, rgb(205, 205, 226) 0% ); 
+    background:linear-gradient(#000, #000) center bottom /calc(70%) 2px no-repeat; 
+    border:none;
+}
+
+
+input[type="radio"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    border: 4px solid red;
+    background-color: rgb(251, 253, 251);
+    border-radius: 50%;
+  }
+
+input[type="radio"]:checked {
+    background-color: rgb(0, 0, 0)
+}
+
+.CreateRoom .Two_Buttons{
+    flex-direction: row;
+}
+.CreateRoom .Two_Buttons div{
+    background-color: rgb(43, 41, 41);
+}
+
+.CreateRoom .Two_Buttons div button{
+    display:flex;
+    flex-direction:row;
+    justify-content: center;
+    font-size:45px;
+    padding:15px;
+
+    cursor:pointer;
+    border:none;
+}
+#b1{width:180px;background-color: rgb(192, 166, 218);
+    border-radius: 10px;}
+#b2{width:140px;margin-left:auto; background-color: rgb(138, 138, 247);
+    border-radius: 10px}
+
+
+
+.CreateRoom .PlayBackSettings div{
+    font-size:25px;
+    height:100%;
+    font-weight:bold;
+    background-color: rgb(164, 196, 156);
+    align-items: center;
+    justify-content: center;
+}
+
+.CreateRoom .Create_Title{
+    font-size:55px;
+    font-weight:bold;
+    background-color: whitesmoke;
+    align-items: center;
+    background-color: rgb(219, 159, 159);
+}
+
+
+.Room{
+    display:flex;
+    flex-direction: column;
+    height:100%;
+    width:100%;
+    font-size:50px;
+    z-index: 1;
+    background-color: rgb(43, 41, 41);
+}
+
+.Room .Top_Buttons{
+    display:flex;
+    height:95px;
+    width:100%;
+    border-color:white;
+}
+
+.Room .Top_Buttons div button{
+    height:100%;
+    font-size:45px;
+    padding:15px;
+
+    cursor:pointer;
+}
+
+.Room .Top_Buttons .divb1{
+    height:100%;
+    width:250px;
+}
+.Room .Top_Buttons .divb2{
+    height:100%;
+    width:250px;
+    margin-left:auto;
+}
+#RoomButton2{
+    width:250px;
+    border-radius: 10px;
+}
+#RoomButton1{
+    width:250px;   
+    border-radius: 10px;
+}
+
+.Room .RoomContent div{
+    display:flex;
+    justify-content: left;
+    align-items: center;
+    margin-bottom:15px;
+}
+.Room .RoomContent{
+    background-color: rgb(43, 41, 41);
+    height:2000px;
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    margin-top:10px;
+    border-color:white;
+}
+.RoomLabel{
+    background-color: white;
+    height:100px;
+    width:350px;
+}
+.RoomInfo{
+    margin-left:50px;
+    width:1000px;
+    background-color: green;
+    height:100px;
+}
+
+.MiniSettings{
+    display:flex;
+    flex-direction: row;
+    margin-inline:15px;
+    
+    
+}
+.Two_Buttons .hidden {display:none;
+}
+.Two_Buttons .update_btn{
+    background-color: rgb(227, 143, 238);
+}
+
+.MiniSettings{
+    display:flex;
+    width:1000px;
+    justify-content: center;
+    margin-left:auto;
+}
+.MiniSettings .CreateRoom{
+    flex-direction: row;
+    height:100%;
+    width:1000px;
+}
+.MiniSettings .CreateRoom div{
+    width:auto;
+}
+
+.MiniSettings .CreateRoom .Create_Title{
+    display:none;
+}
+.MiniSettings .CreateRoom .PlayBackSettings{
+    height:100%;
+    font-size:20px;
+    width:200px;
+    text-align: center;
+}
+.MiniSettings .CreateRoom .PlayBackSettings div{
+    height:100%;
+    font-size:20px;
+    width:200px;
+    text-align: center;
+}
+.MiniSettings .CreateRoom .PauseSettings{
+    height:100%;
+    display:flex;
+    width:350px;
+    font-size:20px;
+    font-weight: bold;
+}
+.MiniSettings .CreateRoom .PauseSettings div{
+    height:100%;
+    width:175px;
+    display:flex;
+   }
+.MiniSettings .CreateRoom .PauseSettings div input{
+    justify-content: center;
+    align-items: center;
+}
+.MiniSettings .CreateRoom .InputField{
+    height:100%;
+    width:270px;
+}
+.MiniSettings .CreateRoom .InputField .Input_Number{
+    height:100%;
+    width:60px;
+}
+.MiniSettings .CreateRoom .InputField .Input_Number .NumberSkips{
+    font-size:20px;
+}
+.MiniSettings .CreateRoom .InputField .SkipTitle{
+    height:100%;
+    font-size:20px;
+    width:210px;
+    text-align: center;
+    padding:30px;
+}
+.MiniSettings .CreateRoom .Two_Buttons div{
+    display:none;
+    position:absolute;
+    width:100%;
+}
+
+.MiniSettings .CreateRoom .Two_Buttons{
+    display:flex;
+    height:100%;
+    width:150px;
+    align-items: center;
+    position:relative;
+}
+.MiniSettings .CreateRoom .Two_Buttons .update_btn{
+   display:flex;
+   height:100%;
+   width:150px;
+}
+.MiniSettings .CreateRoom .Two_Buttons .update_btn button{
+    display:flex;
+    font-size:30px;
+    height:100%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(238, 162, 215)
+ }
+
+ #Card{
+     background-color: transparent;
+ }
+ .Player{
+     width:75%;
+     height:1000px;
+     margin:auto;
+ }
+
+ .Player .Player_Header{
+     display:flex;
+     flex-direction: column;
+     border-style:dotted;
+     height:100%;
+     width:100%;
+     border-radius:50px;
+     background-color: rgb(240, 246, 251);
+ }
+
+.Player .Player_Header img{
+    margin:auto;
+    height:80%;
+    max-width:85%;
+    background-color: rgb(219, 54, 81);
+    border-radius:100px;
+}
+ .Player .Player_Header .PausePlayButtons{
+    display:flex;
+    border-style:dashed;
+    width:60%;
+    margin:auto;
+    border-radius: 20px;
+    height:10%;
+ }
+ .Player .Player_Header .PausePlayButtons div{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border-style:dashed;
+    height:100%;
+    width:50%;
+    background-color: rgb(218, 218, 218);
+ }
+
+ .Player .Player_Header .TitleArtist{
+    display:flex;
+    border-style:dashed;
+    vertical-align: center;
+    width:100%;
+    height:10%;
+ }
+
+ .Player .Player_Header .TitleArtist div{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border-style:dashed;
+    height:100%;
+    width:50%;
+    color:rgb(220, 223, 240);
+    background-color: rgb(8, 8, 8);
+ }
+
+ #PlayerActionButton{
+     height:100px;
+     width:100px;
+ }

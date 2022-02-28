@@ -1,0 +1,24 @@
+FROM nginxinc/nginx-unprivileged:1-alpine
+
+COPY ./proxy/default.conf /etc/nginx/conf.d/default.conf
+COPY ./proxy/uwsgi_params /etc/nginx/uwsgi_params
+COPY ./proxy/nginx.conf /etc/nginx/nginx.conf
+COPY ./proxy/mime.types /etc/nginx/mime.types
+
+USER root
+
+RUN mkdir -p /vol/static
+RUN mkdir -p /vol/media
+RUN mkdir -p /vol/react
+RUN mkdir -p /vol/videos
+
+COPY ./media /vol/media
+
+RUN chown -R nginx:nginx /vol/static
+RUN chown -R nginx:nginx /vol/media
+RUN chown -R nginx:nginx /vol/react
+RUN chown -R nginx:nginx /vol/videos
+
+RUN chmod -R 755 /vol
+
+USER nginx
