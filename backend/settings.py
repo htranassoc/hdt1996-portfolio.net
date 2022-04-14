@@ -11,28 +11,29 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+import json
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
+server_config = open(os.path.join(BASE_DIR,'server_config.json'),'r')
+conf_dict = json.load(server_config)
+
+HOST = conf_dict["host"]
+DOMAIN = conf_dict["domain"].replace('https://','')
+www = conf_dict["www"].replace('https://','')
+server_config.close()
+
 PROJECT_PATH=BASE_DIR
-
-CORS_ALLOW_ALL_ORIGINS= True
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
-
 
 SECRET_KEY=os.environ.get('SECRET_KEY','HDT121919964085')
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(int(os.environ.get('DEBUG',0)))
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [HOST,DOMAIN,www]
 ALLOWED_HOSTS_ENV= os.environ.get('ALLOWED_HOSTS')
+
 if ALLOWED_HOSTS_ENV:
     ALLOWED_HOSTS.extend(ALLOWED_HOSTS_ENV.split(','))
-
-# Application definition
-
+DEFAULT_AUTO_FIELD= 'django.db.models.BigAutoField'
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -62,8 +63,22 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CORS_ALLOWED_ORIGINS = [
+    'https://hdt1996-portfolio.net',
+    'https://www.hdt1996-portfolio.net',
+    f'http://{HOST}:8001',
+    f'http://{HOST}:3000',
+    'http://localhost:3000',
+    'http://127.0.0.1:3000'
+]
 
+CSRF_COOKIE_SECURE = False
+CSRF_COOKIE_HTTPONLY = False
+SESSION_COOKIE_SECURE = False
+SESSION_COOKIE_HTTPONLY = False
+SESSION_CCOKIE_DOMAIN = '127.0.0.1'
 ROOT_URLCONF = 'backend.urls'
+
 
 TEMPLATES = [
     {
@@ -87,25 +102,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'backend.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'storedb',
         'USER': 'postgres',
         'PASSWORD': 'password',
-        'HOST': '192.168.7.237',
+        'HOST': HOST,
         'PORT': '6432',
     }
 }
-
-
-# Password validation
-# https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -113,6 +119,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS':{'min_length':4}
     },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
@@ -122,42 +129,24 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-# Internationalization
-# https://docs.djangoproject.com/en/2.1/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+
+
 STATIC_URL='/static/'
-""" MEDIA_URL='/media/'
-REACT_URL='/react/'
-REACTSTATIC_URL='/react/static/' """
-
 STATIC_ROOT='/vol/web/static'
-#MEDIA_ROOT='/vol/web/media' Not Needed because in 1st Docker File, media files were copied
-"""
-REACT_ROOT= "/webserver/frontend/build" Not needed because this directory was binded from webserver in volumes
-REACTSTATIC_ROOT="/webserver/frontend/build/static" """ #Not needed because this directory was binded from webserver in volumes
-
-#STATICFILES_DIRS=[os.path.join(BASE_DIR,'frontend/build/static'),]
-
-DEFAULT_AUTO_FIELD= 'django.db.models.BigAutoField'
-
+STATICFILES_DIRS=[os.path.join(BASE_DIR,'backend/static')]
+USER_MEDIA_ROOT = os.path.join(BASE_DIR, 'frontend/media')
+USER_MEDIA_URL='/media/'
 
 if DEBUG==1:
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -165,6 +154,26 @@ if DEBUG==1:
     REACT_ROOT= os.path.join(BASE_DIR,"frontend/build/") 
     REACTSTATIC_ROOT=os.path.join(BASE_DIR,"frontend/build/static")
 
-"""     REACTSRC_ROOT= "/webserver/frontend/src" """
-"""     REACTSRC_ROOT= os.path.join(BASE_DIR,"frontend/src") """
-""" REACTSRC_URL='/react/src/' """
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES':[
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES':[
+        'rest_framework.authentication.SessionAuthentication'
+    ]
+}
+""" 
+MEDIA_URL='/media/'
+REACT_URL='/react/'
+REACTSTATIC_URL='/react/static/' 
+"""
+"""
+REACT_ROOT= "/webserver/frontend/build"
+REACTSTATIC_ROOT="/webserver/frontend/build/static" 
+"""
+"""     
+REACTSRC_ROOT= "/webserver/frontend/src"
+REACTSRC_ROOT= os.path.join(BASE_DIR,"frontend/src")
+REACTSRC_URL='/react/src/' 
+"""

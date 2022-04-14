@@ -17,13 +17,24 @@ class Room_Serializer(ModelSerializer):
 class CreateRoomSerializer(ModelSerializer):
     class Meta:
         model = React_Room
-        fields = ('guest_can_pause', 'votes_to_skip')
+        fields = ('title','category','guest_can_pause','votes_to_skip')
 
 class UpdateRoomSerializer(ModelSerializer):
     code = serializers.CharField(validators=[])
     class Meta:
         model = React_Room
-        fields = ('guest_can_pause', 'votes_to_skip', 'code')
+        fields = '__all__'
+
+
+class UpdateRoomHistorySerializer(ModelSerializer):
+    class Meta:
+        model = React_Room_History
+        fields = '__all__'
+
+class UserDataSerializer(ModelSerializer):
+    class Meta:
+        model = React_User_Data
+        exclude= ('user',)
 
 class VideoSerializer(ModelSerializer):
     class Meta:

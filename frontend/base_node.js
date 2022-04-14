@@ -1,10 +1,13 @@
-const node = (debug,PORT,peerPORT,wsPORT) => {
+const node = (PORT,peerPORT,wsPORT) => {
   
   const express = require("express"); 
   const fs = require("fs");
   const path = require("path");
   const {ExpressPeerServer} = require("peer");
   const wsServer = require('websocket').server;
+  const host = require('./node_config').host
+  const domain = require('./node_config').domain
+  const debug = require('./node_config').debug
   
   const node_server = express();
   let http,phttp,wshttp
@@ -53,7 +56,7 @@ const node = (debug,PORT,peerPORT,wsPORT) => {
       pingTimeout:60000,
       pingInterval:30000,
       cors: {
-        origin: [],
+        origin: [`http://${host}`],
         credentials: true,
         methods: ["GET", "POST"]},
     })
@@ -66,7 +69,7 @@ const node = (debug,PORT,peerPORT,wsPORT) => {
       {
         credentials: true,debug: true,
         cors: {
-        origin: ['https://hdt1996-portfolio.me','http://localhost:3000','http://192.168.7.237'],
+        origin: [domain,'http://localhost:3000',`http://${host}`],
         credentials: true,
         methods: ["GET", "POST"]},
       })
@@ -97,13 +100,13 @@ const node = (debug,PORT,peerPORT,wsPORT) => {
   
   ////////////////////////////////////////////////////// Native Websocket Events //////////////////////////////////////////////////////
   
-  ws.on('request', function (req) {
+  ws.on('request', (req) =>{
     var userID = getUniqueID();
     console.log(`${new Date} | Connection from origin: ${req.origin}`);
   
     const connection = req.accept(null, req.origin);
     wsclients[userID] = connection;
-    connection.on('message', function(message) {
+    connection.on('message', (message) =>{
       data=JSON.parse(message.utf8Data)
       
       if (message.type === 'utf8') {
@@ -124,13 +127,15 @@ const node = (debug,PORT,peerPORT,wsPORT) => {
   
   //////////////////////////////////////////////////// Socket.IO General Events //////////////////////////////////////////////////////
   
+  let stream_status
   ping_client()
   io.on("connection", async (socket) =>
   
   {
-    console.log('Connected to Socket')
+    stream_status = true
+    console.log(socket.id,'Connected to Socket')
     
-    socket.on('pong', function(data){
+    socket.on('pong', (data) =>{
       console.log('pong')
     });
   
@@ -142,22 +147,25 @@ const node = (debug,PORT,peerPORT,wsPORT) => {
   
     socket.on('client_file_share',async (data) => 
       {
+        if (stream_status === false){return console.log('No more transport')}
         io.to(data.senderID).emit('response','Client Confirm: Server Received Data')
         io.emit('getbuffer',data)
       });
   
-      socket.on('disconnecting',function(e)
+    socket.on('disconnecting',(e) =>
       {
-        console.log(`Disconnect Pending by Stream Server: ${PORT}| ${peerPORT} due to `,e)
-        for(let room of this.rooms){
+        stream_status = false
+        console.log(`Disconnect Pending by Stream Server: ${PORT}| ${peerPORT} due to `,e);
+        console.log(socket.rooms)
+        for(let room of socket.rooms){
           if(room !== this.id)
           {try{          
-            delete current_users[room][this.id]
-            io.to(room).emit('User-Disconnect',this.id)}
+            delete current_users[room][socket.id]
+            io.to(room).emit('User-Disconnect',socket.id)}
           catch{
-            console.log('Universal Room: Disconnect by ',this.id)
+            console.log('Universal Room: Disconnect by ',socket.id)
           }
-  
+
           }
         }
       });
@@ -173,23 +181,34 @@ const node = (debug,PORT,peerPORT,wsPORT) => {
       socket.join(roomID)
       current_users[roomID][socket.id]='Active'
   
-      io.to(socket.id).emit('my-user-connected', {myUserID:socket.id,current_users:current_users[roomID],mySocket:socket.id})
-      socket.to(roomID).emit('user-connected', {newUserID:socket.id,current_users:current_users[roomID],mySocket:socket.id})
+      io.to(socket.id).emit('my-user-connected', {myUserID:socket.id,current_users:current_users[roomID]})
+      socket.to(roomID).emit("new_user_connected", {newUserID:socket.id})
   
     });
-    socket.on('req-disconnect-user',(data) => {
+
+    socket.on('req_disconnect_user',data => {
       current_users[data.roomID][data.userID]='Removing'
-      socket.to(data.userID).emit('force-disconnect-user',`You are removed from ${data.roomID}`)
-      io.to(data.roomID).emit('confirm-user-removal',`${data.userID} is forcibly disconnected`)
+      io.to(data.userID).emit('force_disconnect_user',`You are removed from ${data.roomID}`)
+      io.to(data.roomID).emit('notify_room_user_removed',`${data.userID} is forcibly disconnected`)
     })
+
+    socket.on('req_hang_up_user',data => {
+      socket.to(data.userID).emit('call_closed_user',data)
+    })
+
+    socket.on('req_call_action',data => {
+      io.to(data.recipient).emit('recipient_call_action',data)
+      io.to(data.caller).emit('recipient_call_action',data)
+    })
+    
   });
   
   console.log('Node Server: Listening on PORT',PORT)
   console.log('Peer Server: Listening on PORT',peerPORT)
   console.log('WS Server: Listening on PORT',wsPORT)
-  http.listen(PORT, '192.168.7.237')
-  phttp.listen(peerPORT,'192.168.7.237')
-  wshttp.listen(wsPORT,'192.168.7.237')
+  http.listen(PORT, host)
+  phttp.listen(peerPORT,host)
+  wshttp.listen(wsPORT,host)
   
   
   

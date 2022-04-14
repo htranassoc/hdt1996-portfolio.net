@@ -1,8 +1,8 @@
-FROM python:3.6-alpine
+FROM python:3.9.12-alpine3.14
 ENV PYTHONUNBUFFERED=1
 RUN apk update && apk add postgresql-dev jpeg-dev zlib-dev
 RUN apk add --update --no-cache --virtual .tmp gcc libc-dev linux-headers
-COPY /requirements.txt /requirements.txt
+COPY ./requirements.txt /requirements.txt
 RUN pip install -r /requirements.txt
 RUN apk del .tmp
 
@@ -26,7 +26,7 @@ RUN chmod -R 755 /vol/web
 
 USER user
 
-CMD ["/scripts/entrypoint.sh"]
+
 
 
 

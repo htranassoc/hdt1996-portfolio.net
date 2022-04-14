@@ -14,8 +14,8 @@ def create_profile(sender, instance, created, **kwargs):
         kwargz.update({f"{arg}":None})
 
     customer= Customer.objects.get_or_create(email='hi@gmail.com',name=f'test',user_id=instance.id)
-    print(vars(User))
-    print(instance.__dict__)
+    """     print(vars(User))
+    print(instance.__dict__) """
 
  
  

@@ -1,5 +1,4 @@
 import csv, os, os.path
-from typing import Iterable
 
 def split_join(X,Y):
     X=X.split(Y)

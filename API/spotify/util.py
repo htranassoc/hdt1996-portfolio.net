@@ -1,7 +1,5 @@
-from lib2to3.pgen2 import token
 from .models import SpotifyToken
 from django.utils import timezone
-from datetime import datetime
 from .SpotifyConfig import *
 from requests import post, put, get
 
@@ -37,12 +35,10 @@ def check_spotify_auth(session_id):
     Called in IsAuthenticated View
     '''
     tokens = get_tokens(session_id) #Get value of token by checking object with keyword arg
-    print('\n\n\n', tokens, '\n\n')
     if tokens:
         expiration= tokens.expiration
 
         if expiration <= timezone.now(): #Check if token is expired yet. If it is, refresh_token called.
-            print('\n\n What is Expired compared to now',expiration,timezone.now(),'\n\n')
             refresh_token(session_id)
 
         return True # Return that authorization is valid in main Is_Authorized view
@@ -77,13 +73,12 @@ def request_data(session_id,endpoint, post_=False,put_=False):
         post(url,headers=header)
     if put_:
         post(url,headers=header)
-    
-
-    response = get(url,{},headers=header)
 
     try: 
-        return(response.json())
-    except:
+        response = get(url,{},headers=header)
+        return response.json()
+    except Exception as e:
+        print(f'Bad Request due to {e}')
         return {'Error': 'Bad Request'}
 
 def play_song(session_id):

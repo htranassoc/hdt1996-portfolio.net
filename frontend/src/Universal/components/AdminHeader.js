@@ -5,15 +5,15 @@ import {home_dir} from '../../apps/Admin'
 const AdminHeader = () => {
     return (
         <div className="Admin_Title_Container">
-            <div className='Admin_Title_Container1'>
-                <div className="Box1">Welcome to Our Apps</div>
-            </div>
-
-            <a className="Home_Button" href={home_dir}>
-                <div className='Admin_Title_Container2'>
-                    <div className="Box3">Back to Home</div>
+            <div className="Admin_TC_Section">
+                <div className="Admin_TC_1">
+                    <div id="Admin_TC_1A">Application Menu</div>
                 </div>
-            </a>
+
+                <div className="Admin_TC_2" >
+                    <a href={home_dir} id="Admin_TC_2a">Back to Home</a>
+                </div>
+            </div>
         </div>
     )
 }

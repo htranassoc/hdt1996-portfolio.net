@@ -59,20 +59,20 @@ const Board = () =>
     {
         let [x,y] = docid
         let element=document.getElementById(docid)
-        element.classList.remove('hidden') 
+        element.classList.remove("MS_hidden") 
         let savedata=JSON.parse(window.localStorage.getItem('Save-Data'))
         
         if(value === -1){
             console.log('You stepped on a mine!')
             setdead(true);
             reset(false);
-            element.classList.add('Wrong_Choice')
+            element.classList.add("Wrong_Choice")
             return false
         }
         else if(value === 0){
 
             var check_element = document.getElementById(docid)
-            if(check_element.classList.contains('Safe'))
+            if(check_element.classList.contains("MS_Safe"))
             {
                 return false
             }
@@ -83,13 +83,13 @@ const Board = () =>
                     if (r <= row - 1 && r >= 0 && c <= col - 1 && c >= 0 && field[r][c] === 0)
                     {
                         let element = document.getElementById([r,c])
-                        if(element.classList.contains('Safe')){
+                        if(element.classList.contains("MS_Safe")){
                             continue
                         }
                         let p_element=document.getElementById([r,c,0]);
-                        p_element.classList.add('shallow_hide');
-                        element.classList.remove('hidden')
-                        element.classList.add('Safe');
+                        p_element.classList.add("MS_shallow_hide");
+                        element.classList.remove("MS_hidden")
+                        element.classList.add("MS_Safe");
                         savedata.push([r,c])
                     }
                 }
@@ -115,17 +115,17 @@ const Board = () =>
         var [x,y]=docid;
         var p_element=document.getElementById([x,y,0]);
         let element = document.getElementById(docid)
-        if(p_element.classList.contains('flagmine')){
-            p_element.classList.remove('flagmine')
+        if(p_element.classList.contains("MS_flagmine")){
+            p_element.classList.remove("MS_flagmine")
             let spl_index = savedata.indexOf([x,y,'F'])
             savedata.splice(spl_index,1)
             window.localStorage.setItem('Save-Data',JSON.stringify(savedata))
             return console.log('Unflagging cell')
         }
-        else if (element.classList.contains('Safe')){
+        else if (element.classList.contains("MS_Safe")){
             return console.log('Already colored cell')
         }
-        p_element.classList.add('flagmine');
+        p_element.classList.add("MS_flagmine");
         savedata.push([x,y,'F'])
         window.localStorage.setItem('Save-Data',JSON.stringify(savedata))
         return console.log('Flagging cell');
@@ -155,20 +155,20 @@ const Board = () =>
                 let [x,y] = current_save[i]
                 if(current_save[i][2] === 'M'){
                     let element = document.getElementById([current_save[i][0],current_save[i][1]]);
-                    element.classList.remove('hidden')
+                    element.classList.remove('MS_hidden')
                 }
                 else if (current_save[i][2] === 'F'){
                     let p_element = document.getElementById([current_save[i][0],current_save[i][1],0]);
-                    p_element.classList.add('flagmine');}
+                    p_element.classList.add('MS_flagmine');}
                 else{
                     let element = document.getElementById(current_save[i])
                     let p_element=document.getElementById([x,y,0])
-                    p_element.classList.add('shallow_hide');
-                    element.classList.remove('hidden')
-                    element.classList.add('Safe');}
+                    p_element.classList.add("MS_shallow_hide");
+                    element.classList.remove("MS_hidden")
+                    element.classList.add("MS_Safe")}
             }
         }
-        window.addEventListener('contextmenu', rightclickevent, false);
+        //window.addEventListener('contextmenu', rightclickevent, false);
     },[dead]); 
 
     useEffect(()=>{
@@ -177,33 +177,33 @@ const Board = () =>
     },[])
 
     return (
-        <div className= "MSContainer" >
+        <div className= "MS_Container" >
             
-            <div className = "AppTitle">
+            <div className = "MS_AppTitle">
                 <AppTitle title = 'MineSweeper'></AppTitle>
             </div>
 
             {dead===true?
-            <div className = "Dead">
+            <div className = "MS_Dead">
                 <Dead onClick={() => {reset(true)}}></Dead>
             </div>
             :
-            <div className="hidden">
+            <div className="MS_hidden">
                 <Dead onClick={() => {reset(true)}}></Dead>
             </div>
             }
 
-            <div className = "MineSweeper">
+            <div className = "MS_MineSweeper">
                 {field.map
                         (
                             (cell, index) => 
                             (
-                                <div key = {index}>
+                                <div key = {index} className="MS_cell_wrap">
                                     {
                                         cell.map((item,index_2) =>
                                         (
-                                        <button id = {[index,index_2,0]} onContextMenu = {() => {flagmine([index,index_2])}} onClick ={() => {unhide([index,index_2],item)}}  key={index_2} className = 'cells'> 
-                                            <div className="hidden" id = {[index,index_2]}>{item}</div> 
+                                        <button id = {[index,index_2,0]} onContextMenu = {() => {flagmine([index,index_2])}} onClick ={() => {unhide([index,index_2],item)}}  key={index_2} className = "MS_cell"> 
+                                            <div className="MS_hidden" id = {[index,index_2]}>{item}</div> 
                                         </button>
                                         )
                                         )

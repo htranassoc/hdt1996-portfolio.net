@@ -7,4 +7,4 @@ Pillow
 djangorestframework
 django-cors-headers
 requests
-
+tzdata

@@ -11,8 +11,8 @@ class SpotifyToken(models.Model):
 class HostSongData(models.Model):
     code = models.CharField(max_length=100,null=True)
     host = models.CharField(max_length=200,null=True)
-    title=models.CharField(max_length=50)
-    artist=models.CharField(max_length=50)
+    title=models.CharField(max_length=200)
+    artist=models.CharField(max_length=100)
     duration=models.DecimalField(max_digits=500,null=True,decimal_places=2)
     time = models.DecimalField(max_digits=500,null=True,decimal_places=2)
     image_url=models.CharField(max_length=500,null=True)

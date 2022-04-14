@@ -5,19 +5,19 @@ import
   Route,
 } from "react-router-dom"
 import React  from 'react';
-import '../React_NotesApp/css/Notes_App.css';
-import {NotesHeader} from '../React_NotesApp/components/NotesHeader'
-import {NotesListPage} from '../React_NotesApp/pages/NotesListPage'
-import {NotesNotePage} from '../React_NotesApp/pages/NotesNotePage'
+import '../React_Notes/css/Notes_App.css';
+import {NotesHeader} from '../React_Notes/components/NotesHeader'
+import {NotesListPage} from '../React_Notes/pages/NotesListPage'
+import {NotesNotePage} from '../React_Notes/pages/NotesNotePage'
 import {Default} from '../Universal/components/Default'
 import {notes_dir} from './Admin'
 
 
-let NotesApp= ({ResetApp}) =>{
+let Notes= ({ResetApp}) =>{
   return (
     <Router>
-      <div className="dark">
-        <div className = "app"><NotesHeader />
+      <div className="NA_dark">
+        <div className = "NA_app"><NotesHeader />
           <Routes>
             <Route path={`${notes_dir}`} element ={<NotesListPage/>} /> 
             <Route path={`${notes_dir}note/:id/`} element ={<NotesNotePage/>} /> 
@@ -30,4 +30,4 @@ let NotesApp= ({ResetApp}) =>{
   );
 }
 
-export {NotesApp}
+export {Notes}

@@ -25,9 +25,10 @@ urlpatterns = [
     path('store/',include('backend.store.urls')),
     path('',include('backend.templates.urls')),
     path('api/',include('frontend.dj_frontend.urls')),
-    path('react/', TemplateView.as_view(template_name='index.html'),name='react_home'),
     path('spotify/',include('API.spotify.urls'))
     ]
+
+    #path('react/', TemplateView.as_view(template_name='index.html'),name='react_home'),
 
 """ urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.REACT_URL, document_root=settings.REACT_ROOT)

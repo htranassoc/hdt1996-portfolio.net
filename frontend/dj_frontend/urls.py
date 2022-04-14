@@ -16,6 +16,12 @@ path('react/rooms/update/',views.UpdateView.as_view(),name="rooms_update"),
 path('react/rooms/<str:roomCode>/',views.GetRoomView.as_view(),name="rooms_get"),
 path('react/Videos/',views.VideosView.as_view()),
 path('react/Videos/<str:vid>/',views.GetVideoView.as_view()),
+path('login/',views.LoginView.as_view()),
+path('signup/',views.SignUpView.as_view()),
+path('csrf_token/',views.GetCSRFToken.as_view()),
+path('authenticated/',views.CheckAuth.as_view()),
+path('getUserData/',views.GetUserData.as_view()),
+path('api-auth/',include('rest_framework.urls')),
 ]
 
 #Manual URL Mapping

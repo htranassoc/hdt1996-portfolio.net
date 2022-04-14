@@ -5,6 +5,7 @@ networks:
 services:
   web:
     user: root
+
     container_name: wscontainer
     networks:
       - stockforecastnetwork
@@ -12,12 +13,13 @@ services:
       context: .
     volumes:
       - .:/webserver
-      - video_data:/webserver/videos
-      - static_data:/vol/web/static
+      - ./static:/vol/web/static
     environment:
       - DEBUG=0
+    command: "/scripts/entrypoint.sh"
     depends_on:
       - db
+
   db:
     container_name: dbcontainer
     networks:
@@ -27,7 +29,7 @@ services:
     ports:
       - 6432:5432
     volumes:
-      - db_vol:/var/lib/postgresql/data
+      - ./psql:/var/lib/postgresql/data
     environment:
       
       POSTGRES_DB: storedb
@@ -43,21 +45,29 @@ services:
       context: .
       dockerfile: ./proxy/Dockerfile
     ports:
-      - "8001:8001"
-      - "80:80"
-      - "443:443"
+      - 8001:8001
+      - 443:443
+      - 80:80
     volumes:
       - ./proxy:/etc/nginx/
-      - static_data:/vol/static
+      - ./static:/vol/static
       - ./media:/vol/media
-      - video_data:/vol/videos
       - ./frontend/build:/vol/react
     depends_on:
       - web
+  ddns:
+    container_name: cfcontainer
+    image: oznu/cloudflare-ddns:latest
+    restart: always
+    ports:
+      - 8080:8080
+    environment:
+      - API_KEY=Wec2xia8uiDtrXG3UGo15CYGaEu5651G_9wMCM8A
+      - ZONE=hdt1996-portfolio.net
+      - PROXIED=false
 
 volumes:
   db_vol: 
   static_data:
-  video_data:
-  acme_ecc:
+
 

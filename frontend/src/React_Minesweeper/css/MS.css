@@ -1,4 +1,4 @@
-.MSContainer{
+.MS_Container{
     display:flex;
     flex-direction:column;
     border-style:dotted;
@@ -9,7 +9,7 @@
     
 }
 
-.Dead{
+.MS_Dead{
     display:flex;
     color:red;
     z-index: 1;
@@ -17,10 +17,12 @@
     width:1800px;
     flex-direction: column;
     position:absolute;
+    top:0px;bottom:0px;left:0px;right:0px;
+    margin:auto;
     background-color:black;
 }
 
-.Dead div .gameover{
+.MS_Dead div .MS_gameover{
     display:flex;
     font-size:150px;
     height:75%;
@@ -31,13 +33,13 @@
     justify-content: center;
 }
 
-.Dead div{
+.MS_Dead div{
     display:flex;
     flex-direction: column;
     width:100%;
     height:100%;
 }
-.Dead div .Restart{
+.MS_Dead div .MS_Restart{
     font-size:40px;
     color:black;
     font-weight: bold;
@@ -52,7 +54,7 @@
     margin-left:auto;
 
 }
-.AppTitle{
+.MS_AppTitle{
     display:flex;
     height:70px;
     width:400px;
@@ -68,46 +70,50 @@
 }
 
 
-.MineSweeper{
+.MS_MineSweeper{
     display:flex;
     color:white;
     position:relative;
-
+    aspect-ratio: 1 / 1;
+    height:90%;
 }
-.cells{
+
+.MS_cell_wrap{
+    flex-grow: 1;
     display:flex;
-    width:1.5em;
-    height:1.5em;
-    border-top:3px solid whitesmoke;
-    border-left:3px solid whitesmoke;
-    border-right: 3px solid black;
-    border-bottom: 3px solid black;
+    max-height:100%;
+    flex-direction: column;
+}
+.MS_cell{
+    flex-grow:1;
+    border-top:.4vh solid whitesmoke;
+    border-left:.4vh solid whitesmoke;
+    border-right: .4vh  solid black;
+    border-bottom: .4vh solid black;
     background-color: rgb(107, 105, 105);
     margin:1px;
+    border-radius:0;
     cursor:pointer;
 }
-.flagmine{
+.MS_flagmine{
     background-color: red;
 }
-.Safe{
-    display:flex;
-    align-items: center;
-    justify-content: center; 
+.MS_Safe{
     background-color:rgb(57, 95, 57);
     color:transparent;
     width:100%;
     height:100%;
 
 }
- .shallow_hide{
+ .MS_shallow_hide{
     background-color:none;
     border:none;
 } 
 
-.hidden{
+.MS_hidden{
     display:none
 }
-.Wrong_Choice{
+.MS_Wrong_Choice{
     background-color:red;
     width:100%;
     height:100%;

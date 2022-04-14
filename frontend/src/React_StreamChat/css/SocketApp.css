@@ -1,0 +1,157 @@
+.SA_msghistory{
+    display:flex;
+    background-color: rgb(204, 204, 247);
+    height:max-content;
+    flex-wrap:wrap;
+    padding:.5em;
+    border-bottom:2px solid black;
+}
+.SA_msghistory_user{
+    display:flex;
+    justify-content: space-between;
+    width:100%;
+    font-size:1em;
+    font-weight: bolder;
+}
+
+.SA_msghistory_message{
+    font-size:1em;
+    padding:.5em;
+    margin-top:.5em;
+    display:flex;
+    flex-wrap:wrap;
+    word-break:break-all;
+    text-align: justify;
+    background-color:rgb(191, 191, 243);
+    width:100%;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.SA_msghistory_message .SA_download{
+    margin-left:auto;
+}
+.SA_SocketApp{
+    display:flex;
+    background-color: rgb(23, 28, 56);
+    height:100%;
+    min-width:30em;
+    justify-content: center;
+
+}
+.SA_ChatRoom{
+    height:100%;
+    width:100%;
+    position:relative;
+    padding:1em;
+}
+.SA_NewMessage{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: center;
+    align-items: center;
+    font-size:1em;
+    height:max-content;
+}
+.SA_NewMessage #SA_Input_Message{
+    text-align: center;
+    flex-grow:1;
+    background-color: rgb(244, 248, 253);
+    color:black;
+    height:2.5em;
+    border:none;
+}
+#SA_Input_Message::placeholder{
+    color:rgb(146, 146, 150);
+}
+
+.SA_NewMessage button{
+    display:flex;
+    width:10em;
+    height:2.5em;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(187, 238, 253);
+    border:none;
+
+}
+.SA_NewMessage .SA_InputFileContainer{
+    display:flex;
+    width:15em;
+    height:2.5em;
+    align-items: center;
+    justify-content: center;
+    flex-grow:1;
+    border:none;
+    background-color: rgb(220, 214, 248);
+}
+
+.SA_NewMessage .SA_InputFileContainer div{
+    width:8em;
+}
+
+.SA_NewMessage .SA_InputFileContainer input{
+    flex:1;
+}
+
+.SA_Login{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom:auto;
+    margin-top:1em;
+    flex-wrap:wrap;
+    max-width:100%;
+    overflow-x:hidden;
+}
+.SA_Login input {
+    text-align: center;
+    font-size:2em;
+    flex-grow:9999;
+    max-width:100%;
+    border-radius:.25em;
+    background-color: rgb(177, 233, 255);
+    border:none;
+    margin-left:.125em;
+    margin-right:.125em;
+}
+.SA_Login input::placeholder{
+    color:rgb(68, 68, 68);
+    font-size:1em;
+
+}
+
+.SA_Login button{
+    position:relative;
+    display:flex;
+    flex-grow:1;
+    max-width:100%;
+    height:100%;
+    align-items: center;
+    justify-content: center;
+    border-radius:.75em;
+    border:none;
+    background-color: rgb(92, 253, 200);
+    overflow-x:hidden;
+    margin-left:.125em;
+    margin-right:.125em;
+
+}
+.SA_Login button div{
+    width:100%;
+    font-size:2em;
+    font-weight:600;
+    padding-left:.4em;
+    padding-right:.4em;
+}
+
+.SA_progress_bar{
+    display:flex;
+    background-color: white;
+    width:100%;
+    height:40px;
+    align-items: center;
+}
+.SA_progress_slider{
+    height:75%;
+    background-color: blue;
+}

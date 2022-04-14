@@ -50,14 +50,8 @@ class HomeView(View):
         rooturl=str(request.build_absolute_uri('/'))
         url=str(request.build_absolute_uri())
         slug=url.replace(rooturl,'')
-        data=cartData(request)
-        cartItems=data['cartItems']
-        cartItemsCk=data['cartItemsCk']
-        order=data['order']
-        items=data['items']
-        itemsCk=data['itemsCk']
 
-        context={'items':items,'order':order,'cartItems':cartItems,'cartItemsCk':cartItemsCk,'itemsCk':itemsCk}
+        context={}
 
         if slug == '':
             html_template='home.html'
@@ -67,10 +61,6 @@ class HomeView(View):
 
         elif slug == 'react/notes_app/':
             html_template='react_notes.html'
-
-        if request.user.is_authenticated:
-            newcookie=data['newcookie']
-            context.update({'newcookie':newcookie})
 
         return render(request, html_template , context)
 

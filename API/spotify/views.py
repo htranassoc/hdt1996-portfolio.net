@@ -6,6 +6,8 @@ from rest_framework import status
 from rest_framework.response import Response
 from requests import Request,post
 from .util import *
+from django.conf import settings
+
 from django.shortcuts import render, redirect
 from frontend.dj_frontend.models import React_Room
 class GetAuthURL(APIView):
@@ -35,7 +37,7 @@ class Redirect_Callback(APIView):
 
         update_or_create_tokens(request.session.session_key,access_token,token_type,expiration,refresh_token)
 
-        return redirect('http://192.168.0.37:8001/react/ContentSharing/')
+        return redirect(f'https://{settings.DOMAIN}/react/Spotify/')
 
 
 class IsAuthenticated(APIView): 
@@ -48,27 +50,30 @@ class IsAuthenticated(APIView):
 
 class CurrentSong(APIView):
     def get(self, request):
+
         room_code = request.session.get('JoinCode') #will only get JoinCode in active Django request, not debug React
         room = React_Room.objects.filter(code=room_code)
+
         if room.exists():
             room = room[0]
         else:
-            return Response({}, status = status.HTTP_404_NOT_FOUND)
-        
+            return Response('No Room', status = status.HTTP_404_NOT_FOUND)
+
         host = room.host
         endpoint = "player/currently-playing/"
+
         response = request_data(host,endpoint)
 
         if  response.get('error') != None or response.get('item')== None:
-            return Response({'No Content':'No Active Songs in Spotify Selection'}, status=status.HTTP_202_ACCEPTED)
-        
+            return Response('No Song', status=status.HTTP_202_ACCEPTED)
+
         item = response['item']
         duration = item['duration_ms']
         song_id=item['id']
         album_cover = item['album']['images'][0]['url']
         progress= response['progress_ms']
         is_playing=response['is_playing']
-        
+
         artist_string=[]
         for i, artist in enumerate(item['artists']):
             artist_string.append(artist['name'])
@@ -82,8 +87,7 @@ class CurrentSong(APIView):
             'image_url':album_cover,
             'is_playing':is_playing,
             'votes':0,
-            'id':song_id
-        }
+            'id':song_id}
 
         return Response(song,status=status.HTTP_200_OK)
 
@@ -159,8 +163,10 @@ class HostDataUpdate(APIView):
     serializer_class=HostSongData_Serializer
     def post(self,request):
         room_code=request.session.get('JoinCode')
+        
         hostdata = HostSongData.objects.filter(code=room_code)
         serializer = self.serializer_class(data=request.data)
+        print('\n\n',room_code, request.data,request,'\n\n')
         if serializer.is_valid():
             title=serializer.data['title']
             artist=serializer.data['artist']
@@ -171,17 +177,8 @@ class HostDataUpdate(APIView):
             image_url=serializer.data['image_url']
             is_playing=serializer.data['is_playing']
         else:
+            print(f'\n\n INVALID POST Serialized {serializer.data}\n\n')
             return Response({'Error':'Fetch data submitted is not valid'},status=status.HTTP_403_FORBIDDEN)
-
-        data={
-            'title':title,
-            'artist':artist,
-            'code':code,
-            'votes':votes,
-            'duration':duration,
-            'time':time,
-            'image_url':image_url,
-            'is_playing':is_playing}
 
         if len(hostdata)>0:
 
@@ -208,8 +205,5 @@ class HostDataUpdate(APIView):
             is_playing=is_playing)
             hostdata.save()
 
-
-            return Response(data,status=status.HTTP_200_OK)
-
-        return Response(data,status=status.HTTP_200_OK)
+        return Response(serializer.data,status=status.HTTP_200_OK)
         
