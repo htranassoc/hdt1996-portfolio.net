@@ -233,3 +233,7 @@
     cursor:pointer;
     opacity:.6;
 }
+
+.Dashboard_Placeholder_Black::placeholder{
+    opacity:1;
+}

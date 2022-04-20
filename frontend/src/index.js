@@ -77,7 +77,8 @@ for (x in Combined_Dict)                        // REMEMBER, IF WE GET MINIFIED/
   let query = document.querySelectorAll(`#${x}`)
   if (query.length === 1)
   { 
-    renderComponent(x,query,0)
+    renderComponent(x,query,0);
+    
   }
   if (query.length > 1)
   {

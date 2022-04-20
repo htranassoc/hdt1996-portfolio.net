@@ -10,7 +10,11 @@ import empty_profile_pic from '../../Universal/images/Empty_Profile_Pic.svg'
 const Navigation = ({CheckAuth,setCheckAuth,UserData}) => {
   
   let toggle = false
-
+  if(CheckAuth === undefined && setCheckAuth === undefined && UserData === undefined){
+    CheckAuth = null;
+    setCheckAuth = null;
+    UserData = null;
+  }
   let renderLogin = (bool) => {
     let element = document.querySelector("#Navigation_User_Menu")
     if(bool === true){
@@ -32,7 +36,11 @@ const Navigation = ({CheckAuth,setCheckAuth,UserData}) => {
     {
       let element = document.querySelector("#Navigation_User_Menu")
       element.style.flex=.3;
-      let user_data = UserData.user_data
+      let user_data = UserData.user_data;
+      if(user_data.profile_pic === null){
+        console.log('\n\n Null \n\n')
+        user_data.profile_pic = empty_profile_pic
+      }
 
       return (
         <div className="Navigation_Profile_Header Navigation_Inner_Row">
