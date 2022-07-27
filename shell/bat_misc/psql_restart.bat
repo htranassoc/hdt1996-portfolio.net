@@ -1,0 +1,1 @@
+start pg_ctl restart -D "C:\Program Files\PostgreSQL\14\data"

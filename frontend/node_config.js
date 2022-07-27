@@ -1,6 +1,7 @@
-let host = require('C:/Projects/Portfolio/webserver/server_config.json').host
-let domain = require('C:/Projects/Portfolio/webserver/server_config.json').domain
-let debug = false;
+let host = require('C:/Users/hduon/Documents/Portfolio/server_config.json').host
+let domain = require('C:/Users/hduon/Documents/Portfolio/server_config.json').domain
+let debug = false
+let base_dir = "C:/Users/hduon/Documents/Portfolio/proxy/certs/"
 
 
 let nodeS1 = [8010, 8020, 8030]
@@ -16,5 +17,6 @@ module.exports=
     nodeS3:nodeS3,
     nodeS4:nodeS4,
     host:host,
-    domain:domain
+    domain:domain,
+    base_dir,base_dir
 }

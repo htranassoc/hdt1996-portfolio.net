@@ -1,6 +1,6 @@
 version: "3.7"
 networks:
-  stockforecastnetwork: 
+  ht_container_net: 
     driver: bridge
 services:
   web:
@@ -8,7 +8,7 @@ services:
 
     container_name: wscontainer
     networks:
-      - stockforecastnetwork
+      - ht_container_net
     build:
       context: .
     volumes:
@@ -16,31 +16,30 @@ services:
       - ./static:/vol/web/static
     environment:
       - DEBUG=0
-    command: "/scripts/entrypoint.sh"
+    command: "bash /scripts/entrypoint.sh"
     depends_on:
       - db
+      
 
   db:
     container_name: dbcontainer
     networks:
-      - stockforecastnetwork
+      - ht_container_net
 
     image: timescale/timescaledb:latest-pg14
     ports:
-      - 6432:5432
-    volumes:
-      - ./psql:/var/lib/postgresql/data
+      - 5432:5432
     environment:
       
       POSTGRES_DB: storedb
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
+      POSTGRES_PASSWORD: MrPho1219@
 
   proxy:
     user: root
     container_name: proxycontainer
     networks:
-      - stockforecastnetwork
+      - ht_container_net
     build:
       context: .
       dockerfile: ./proxy/Dockerfile

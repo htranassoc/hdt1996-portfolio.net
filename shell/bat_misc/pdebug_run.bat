@@ -1,0 +1,1 @@
+start python C:\Users\hduon\Documents\Portfolio\manage.py runserver 0.0.0.0:8001

@@ -1,6 +1,7 @@
 FROM python:3.9.12-alpine3.14
 ENV PYTHONUNBUFFERED=1
 RUN apk update && apk add postgresql-dev jpeg-dev zlib-dev
+RUN apk add bash dos2unix
 RUN apk add --update --no-cache --virtual .tmp gcc libc-dev linux-headers
 COPY ./requirements.txt /requirements.txt
 RUN pip install -r /requirements.txt
@@ -12,7 +13,7 @@ WORKDIR /webserver
 COPY ./scripts /scripts
 
 RUN chmod +x /scripts/*
-
+RUN dos2unix /scripts/entrypoint.sh
 RUN mkdir -p /vol/web/media
 RUN mkdir -p /vol/web/static
 RUN mkdir -p /vol/web/react

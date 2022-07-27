@@ -8,6 +8,8 @@ const node = (PORT,peerPORT,wsPORT) => {
   const host = require('./node_config').host
   const domain = require('./node_config').domain
   const debug = require('./node_config').debug
+  const base_dir = require('./node_config').base_dir
+  
   
   const node_server = express();
   let http,phttp,wshttp
@@ -20,21 +22,21 @@ const node = (PORT,peerPORT,wsPORT) => {
   if(debug === false){
     http = require('https').Server(
     {
-      key: fs.readFileSync(path.join('C:/Projects/Portfolio/webserver/proxy/certs/','key_p1.pem')),
-      cert: fs.readFileSync(path.join('C:/Projects/Portfolio/webserver/proxy/certs/','cert_p1.pem'))
+      key: fs.readFileSync(path.join(base_dir,'key_p1.pem')),
+      cert: fs.readFileSync(path.join(base_dir,'cert_p1.pem'))
     },node_server)
   
     phttp = require('https').Server(
       {
-        key: fs.readFileSync(path.join('C:/Projects/Portfolio/webserver/proxy/certs/','key_p1.pem')),
-        cert: fs.readFileSync(path.join('C:/Projects/Portfolio/webserver/proxy/certs/','cert_p1.pem'))
+        key: fs.readFileSync(path.join(base_dir,'key_p1.pem')),
+        cert: fs.readFileSync(path.join(base_dir,'cert_p1.pem'))
       },node_server)
     
     
     wshttp = require('https').Server(
       {
-        key: fs.readFileSync(path.join('C:/Projects/Portfolio/webserver/proxy/certs/','key_p1.pem')),
-        cert: fs.readFileSync(path.join('C:/Projects/Portfolio/webserver/proxy/certs/','cert_p1.pem'))
+        key: fs.readFileSync(path.join(base_dir,'key_p1.pem')),
+        cert: fs.readFileSync(path.join(base_dir,'cert_p1.pem'))
       },node_server)}
   
   else
