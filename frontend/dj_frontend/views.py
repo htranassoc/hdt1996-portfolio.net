@@ -55,8 +55,8 @@ class GetUserData(APIView):
 
         if request.user.is_authenticated:
             print('\n\n Authenticated \n\n')
-        """ else:
-            return Response({'Error_Auth': 'Not Authenticated'}) """
+        else:
+            return Response({'Error_Auth': 'Not Authenticated'})
         test = User.objects.filter(username='Hung')
         test = test[0]
         user_data_query = React_User_Data.objects.filter(user=test)#request.user)

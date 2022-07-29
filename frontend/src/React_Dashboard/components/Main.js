@@ -25,6 +25,7 @@ export class Main extends Component {
         this.getUserData = async () => {
             let response = await fetch(`${domain}/api/getUserData/`)
             let data = await response.json()
+            if(data['Error_Auth']){return}
             console.log(data)
             console.log(Object.keys(data.user_data))
             this.setState({UserData:data})

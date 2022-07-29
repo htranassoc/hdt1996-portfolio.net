@@ -79,9 +79,10 @@
 }
 
 .MS_cell_wrap{
-    flex-grow: 1;
+    flex-grow: 0;
     display:flex;
-    max-height:100%;
+    height:1000px;
+    width:37px;
     flex-direction: column;
 }
 .MS_cell{
@@ -92,6 +93,7 @@
     border-bottom: .4vh solid black;
     background-color: rgb(107, 105, 105);
     margin:1px;
+    height:10px;
     border-radius:0;
     cursor:pointer;
 }
