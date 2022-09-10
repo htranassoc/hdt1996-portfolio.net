@@ -35,18 +35,22 @@ class CheckAuth(APIView):
     @method_decorator(csrf_exempt,name="get")
     def get(self, request):
         isAuthenticated = request.user.is_authenticated
-
         if isAuthenticated:
             return Response({'Success':'Authenticated'})
         return Response({'Auth_Error':'Not Authenicated'})
     @method_decorator(csrf_exempt,name="post")
     def post(self,request):
-        user_query=User.objects.filter(username='Hung')
+        data = request.data
+        username=data['username']
+        user_query=User.objects.filter(username=username)
+        if len(user_query) == 0:
+            return Response({'Auth_Error':'Invalid Credentials'})
         user = user_query[0]
         password_validate = user.check_password(request.data)
         if password_validate == True:
             return Response({'Validated': 'Current Password is verified'},status=status.HTTP_200_OK)
-        return Response({'Invalidated': 'Current Password is not correct.'},status=status.HTTP_200_OK)
+        return Response({'Auth_Error':'Invalid Credentials'},status=status.HTTP_200_OK)
+
 @method_decorator(csrf_exempt,name="get")
 class GetUserData(APIView):
     serializer_class = UserDataSerializer
