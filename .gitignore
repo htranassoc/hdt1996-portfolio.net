@@ -1,5 +1,5 @@
-/home/htran/Desktop/hdt1996-portfolio.net/static
-/home/htran/Desktop/hdt1996-portfolio.net/psql
+static/
+psql/
 */node_modules
 *.jpg
 *.png
@@ -8,5 +8,5 @@
 *.mp3
 *.mp4
 *.PNG
-*/__pycache__
-*/migrations
+*/__pycache__/
+*/migrations/
