@@ -1,0 +1,10 @@
+npx create-react-app _______ // choose directory first or specify one
+npm start --port ____ //start react server
+npm run server //to run all commands in package.json scripts including port and host configuration of db
+
+json-server --watch db.json --port 3001 --host 192.168.0.37 //start dummy json server backend
+
+npm run build // to build deployment folder
+npm install -g serve to install deployment folder to see locally
+
+serve -s // run built server

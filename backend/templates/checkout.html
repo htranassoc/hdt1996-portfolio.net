@@ -1,0 +1,105 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+<body>
+    
+
+<div class="row" style="color:black">
+    <div class="col-lg-6">
+        <div class="box-element" id="form-wrapper">
+
+            <form id="form">
+
+                <!--{% csrf_token %}-->
+                <div id="user-info">
+                    <div class="form-field">
+                        <input required class="form-control" type="text" name="name" placeholder="Name..">
+                    </div>
+                    <div class="form-field">
+                        <input required class="form-control" type="email" name="email" placeholder="Email..">
+                    </div>
+                </div>
+
+                <div id="shipping-info">
+
+                    <div id="shipping-info">
+						<hr>
+						<p>Shipping Information:</p>
+						<hr>
+						<div class="form-field">
+							<input class="form-control" type="text" name="address" placeholder="Address..">
+						</div>
+						<div class="form-field">
+							<input class="form-control" type="text" name="city" placeholder="City..">
+						</div>
+						<div class="form-field">
+							<input class="form-control" type="text" name="state" placeholder="State..">
+						</div>
+						<div class="form-field">
+							<input class="form-control" type="text" name="zipcode" placeholder="Zip code..">
+						</div>
+						<div class="form-field">
+							<input class="form-control" type="text" name="country" placeholder="Zip code..">
+						</div>
+					</div>
+                </div>
+                <hr>
+                <input id="form-button" class="btn btn-success btn-block" type="submit" value="Continue">
+
+            </form>
+
+        </div>
+        <br>
+        <div class="box-element hidden" id="payment-info">
+            <small>Paypall Options</small>
+            <div id="paypal-button-container"></div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="box-element">
+            <a class="btn btn-outline-dark" href="{% url 'cart' %}">&#x2190; Back to Cart</a>
+            <hr>
+                <h3>Order Summary</h3>
+                <div class="cart-row" style="position:relative;top:10px;right:50px;border:none">
+                    <div style="flex:3.5; text-align:right"></div>
+                    <div style="flex:2; text-align:right;position:relative;left:5px"><strong>Product</strong></div>
+                    <div style="flex:2; text-align:right;position:relative;right:10px"><strong>Price</strong></div>
+                    <div style="flex:2; text-align:right"><strong>Quantity</strong></div>
+                    <div style="flex:2; text-align:right"><strong>Subtotal</strong></div>
+                </div>
+            <hr>
+
+                {% for item in itemsCk %}
+
+                <div class="cart-row" style="position:relative;top:10px;right:50px;border:none">
+                    <div style="flex:3.5; text-align:right;position:relative;right:5px;bottom:15px"><img class="row-image" style="border-radius:10%" src="{{item.product.imageURL}}"></div>
+                    <div style="flex:2; text-align:right;position:relative;left:5px">{{item.product.name}}</div>
+                    <div style="flex:2; text-align:right;position:relative;right:10px">{{item.product.price}}</div>
+                    <div style="flex:2;text-align:right;position:relative;right:25px">{{item.quantity}}</div>
+                    <div style="flex:2;text-align:right">${{item.total_price}}</div>
+                </div>
+
+                {% endfor %}
+                <hr>
+                <br>
+                <div style="flex:2; text-align:right;margin-right:50px">
+                    <h5><strong>Items: {{order.get_cart_items}}</strong></h5></div>
+                <div style="flex:2; text-align:right;margin-right:50px">
+                    <h5><strong>Total: ${{order.get_cart_total}}</strong></h5></div>
+                
+        </div>
+    </div>
+    
+</div>
+
+
+<script src="https://www.paypal.com/sdk/js?client-id=AVv58jspgDU7MxCu7esaXmjr8kq3KwqEV3u59Qz4Y50gT9y_QioObYyqI9w_S4GNHqY8rR_xZ6HOJEg1&currency=USD"></script>
+
+<input name="order.shipping" id="order.shipping" value='{{order.shipping}}' style="color:white;font-size:100px; display:none"></input>
+<input name="order.get_cart_total_2" id="order.get_cart_total" value='{{order.get_cart_total|floatformat:2}}' style="display:none" ></input>
+<script type="module" src ="{% static 'store/js/forms.mjs' %}"></script>
+
+</body>
+{% endblock content %}

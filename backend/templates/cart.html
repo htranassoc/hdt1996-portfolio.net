@@ -1,0 +1,91 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<body>
+
+<div>
+    <div class="box-element">
+        <div class = "flexcont">   
+            <a class = "btn btn-success to_left contshop" href="{% url 'store' %}">&#x2190; Continue Shopping</a>
+            <a class = "btn btn-success to_right chkout" href="{% url 'checkout' %}">Checkout</a>
+        </div>
+        <br>
+
+        <div class="flexcont">
+
+
+        <div>
+            <button data-action="clear" id="clear_cart" class="btn btn-outline-secondary add-btn clearbutton" onclick="() => {location.href=''; return false}"><strong>Clear Cart</strong></button>
+            <button data-action="clear_ots" id="clear_ots" class="btn btn-outline-secondary add-btn clear_ots" style="position:relative;left:10px" onclick="() => {location.href=''; return false}"><strong>Remove Out of Stock</strong></button>
+        </div> 
+
+
+        <div class="row to_right" >
+            <div class = "flexcont">                   
+                <div class="adjust">Total: </div>
+                <div class="row to_right"><strong>$ {{order.get_cart_total}}</strong></div>
+            </div>
+
+            <div class="flexcont">
+                <div class="adjust">Item: </div>
+                <div class="row to_right"><strong>{{order.get_cart_items}}</strong></div>
+            </div>
+        </div>
+
+
+        </div>
+    </div>
+
+        <br>
+
+    <div class="box-element">
+        <div class="cart-row">
+            <div class="cartlabel"><strong>Image</strong></div>
+            <div class="cartlabel"><strong>Item</strong></div>
+            <div class="description"><strong>Options</strong></div>
+            <div class="cartlabel2"><strong>Price</strong></div>
+            <div class="cartlabel2"><strong>Quantity</strong></div>
+            <div class="cartlabel2"><strong>Total</strong></div>
+        </div>
+
+        {% for item in itemsCk %}
+
+        <div class="cart-row">
+            <div class="cartlabel"><img class="row-image" src="{{item.product.imageURL}}"></div>
+            <div class="cartlabel">{{item.product.name}}</div>
+            <div class="description">
+            <strong>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</strong>
+            </div>
+            <div class="cartlabel2">{{item.product.price}}</div>
+            <div class="cartlabel2">
+                <p class="quantity" id="{{item.product.name}}numquantity{{item.product.productindex}}">{{item.quantity}}
+                    <div class="quantity arrow_shift">
+                        <img id="{{item.product.name}}uparrow{{item.product.productindex}}" data-product={{item.product.id}} data-action="add" class="chg-quantity update-cart up_fix" src="{% static 'store/images/arrowup.png' %}">
+                        <img id="{{item.product.name}}downarrow{{item.product.productindex}}" data-product={{item.product.id}} data-action="remove" class="chg-quantity update-cart" src="{% static 'store/images/arrowdown.png' %}">
+                    </div>
+                </p>
+            </div>
+
+            <div class="cartlabel2" id="{{item.product.name}}total{{item.product.productindex}}">{{item.total_price}}</div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+</div>
+
+
+<input name="request.user" id="request.user" value="{{request.user}}" style="display:none"></input>
+<input type="list" name="newvsold" id="newvsold" value="{{newvsold}}" style="display:none"></input>
+<input name="itemsjson" id="items" value='{{items}}' style="display:none"></input>
+<input name="itemsjson" id="itemsCk" value='{{itemsCk}}' style="display:none"></input>
+
+<br> 
+<script type="module" src ="{% static 'store/js/outofstock.mjs' %}"></script>
+
+
+</body>
+
+{% endblock content %}
+

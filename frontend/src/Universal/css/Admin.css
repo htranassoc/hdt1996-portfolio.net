@@ -1,0 +1,206 @@
+:root{
+    font-size:15px;
+}
+
+.React_Admin{
+    position:relative;
+    margin-top:5em;
+    width:inherit;
+    height:100em;
+}
+
+.Admin_Container{
+    position:relative;
+    display:flex;
+    z-index:1;
+    top:0em;
+    bottom:0px;
+    left:0px;
+    right:0px;
+    flex-direction: column;
+    text-align: center;
+    height:100%;
+    width:100%;
+} 
+
+#Admin_Background{
+    position:fixed;
+    top:0px;
+    bottom:0px;
+    right:0px;
+    left:0px;
+    width:100%;
+    height:100%;
+    margin:auto;
+    z-index: 1;
+    background-image: url("../images/Background_Day.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.Admin_Title_Container{
+    display:flex;
+    width:100%;
+    height:100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}  
+
+.Admin_TC_Section{
+    width:55em;
+    height:20em;
+}
+
+.Admin_TC_1{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size:4em;
+    line-height: 8em;
+    height:60%;
+    width:100%;
+    font-weight: bold;
+    background-color:rgba(155, 124, 163, 0.829);
+    border-radius: .5em;
+    border:solid black .1em;
+    margin-bottom:.05em
+}
+
+.Admin_TC_2{
+    display:flex;
+    margin:0 auto;   
+    align-items: center;
+    font-size:3.5em;
+    justify-content: right;
+    font-weight: bold;
+    width:100%;
+    height:40%;
+}
+
+#Admin_TC_2a{
+    display:flex;
+    background-color:rgb(146, 129, 194);
+    height:100%;
+    align-items: center;
+    justify-content: center;
+    padding:1em;
+    border-radius: .5em;
+    border:solid black .1em;
+    color:black;
+    text-decoration: none;
+}
+
+.Admin_Menu_Container{
+    position:relative;
+    display:flex;
+    flex-direction: column;
+    width:100%;
+    height:max-content;
+    margin-left:auto;
+    margin-right:auto;
+    border-radius:1em;
+}
+
+.Admin_Menu_Header{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding:1em;
+    height:2.5em;
+    width:100%;
+    background-color:rgba(134, 108, 141, 0.877);
+    font-size:3em;
+    font-weight: bold;
+    border: solid black .1em;
+} 
+
+.Admin_Menu_{
+    display:flex;
+    background-color:rgba(250, 250, 250, 0.521);
+    flex-wrap:wrap;
+    justify-content:center;
+    align-items:center
+}
+
+.Admin_Menu_ div{
+    margin:auto;
+    font-size:2em;
+
+    margin:.5em;
+}
+
+.Admin_Menu_ div button{
+    border-radius:1em;
+    font-weight: bold;
+    padding:1em;
+    height:100%;
+    width:100%;
+    background-color:rgb(146, 129, 194);
+    border: solid black .15em;
+}
+
+.Admin_Menu_ div button a{
+    color:black;
+    text-decoration: none;
+}
+
+
+
+.Admin_Selected_Container{
+    position:absolute;
+    top:0px;
+    left:0px;
+    right:0px;
+    bottom:0px;
+    display:flex;
+    flex-direction: column;
+    width:100%;
+    height:100%;
+    margin-left:auto;
+    margin-right:auto;
+    z-index:2;
+}
+
+
+
+.Admin_Reset_Wrapper{
+    display:flex;
+    position:relative;
+    background-color:rgba(77, 65, 92, 0.877);
+    justify-content: right;
+    height:5em;
+}
+.Admin_App_Title{
+    position:absolute;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    top:0px;
+    right:0px;
+    left:0px;
+    bottom:0px;
+    height:100%;
+    color:white;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.Admin_Reset{
+    display:flex;
+    position:relative;
+    height:100%;
+    width:5em;
+    font-size:3em;
+    justify-content:center;
+    align-items: center;
+    border:solid black .1em;
+    background-color: rgb(185, 145, 201);
+    color: black;
+}
+
+#Admin_Close_Btn{
+    color:black;
+    text-decoration: none;
+}

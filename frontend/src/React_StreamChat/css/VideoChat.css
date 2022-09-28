@@ -1,0 +1,291 @@
+@media screen and (min-width:0px){
+    .SA_Webcam{
+        height:100%;
+        width:100%;
+    }
+    #SA_video_grid video {
+    display:flex;
+    width:45%;
+    border-radius: 2em;
+    margin:1em;
+    }
+
+    #SA_video_grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width:100%;
+    }
+
+    .SA_main {
+    height:100%;
+    width:100%;
+    display: flex;
+    }
+    .SA_main__left {
+    display: flex;
+    flex-direction: column;
+    width:0%;
+    flex-grow:1;
+    height:100%;
+    background-color: rgb(49, 49, 49);
+    border-top:solid black .15em;
+    border-right:solid black .15em;
+    overflow-y:scroll;
+    }
+    .SA_main__mid{
+        width:0%;
+        overflow:hidden;
+        flex-grow:1;
+    }
+    .SA_slide_right{
+        margin-left:auto;
+        background-color: rgb(199, 194, 194);
+        width:10px;
+        text-align: center;
+        border: .25em solid transparent;
+    }
+
+    .SA_main__right {
+        overflow-x: hidden;
+        background-color: #242f41;
+        height:100%;
+    }
+
+    .SA_MyUserandVideo{
+        display:flex;
+        font-size:1.5em;
+        justify-content: center;
+        align-items: center;
+        height:3em;
+        min-width:35em;
+        margin-top:1em;
+        margin-left:.5em;
+        margin-right:.5em;
+    }
+
+    .SA_MyUserandVideo div{
+        flex-grow:1;
+        display:flex;
+    }
+
+    .SA_MyUserandVideo .SA_Call_All{
+        height:100%;
+    }
+
+    .SA_MyUserandVideo .SA_Enable_Video{
+        height:100%;
+    }
+
+    #SA_Enable_Video_Btn{
+        align-items: center;
+        justify-content: center;
+        margin-left:auto;
+        font-weight: bold;
+        height:100%;
+        width:9em;
+        padding:.25em;
+        border-radius:1em;
+
+    }
+    #SA_Call_All_Button{
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        height:100%;
+        width:9em;
+        padding:.25em;
+        border-radius:1em;
+    }
+
+    .SA_MyUserandVideo .SA_My_Info{
+        display:flex;
+        flex-direction: column;
+        font-size:.8em;
+        font-weight: bold;
+        background-color: rgb(195, 205, 218);
+        border-radius:.75em;
+        justify-content: center;
+        align-items: center;
+        margin-left:.2em;
+        margin-right:.2em;
+        min-width:17.5em;
+        height:100%;
+    }
+
+    .SA_MyUserandVideo .SA_My_Info .SA_MyInfoR1{
+        display:flex;
+        flex-grow:0;
+        width:100%;
+
+    }
+    .SA_MyUserandVideo .SA_My_Info .SA_MyInfoR2{
+        display:flex;
+        flex-grow:0;
+        width:100%;
+   
+    }
+
+    .SA_MyUserandVideo .SA_My_Info .SA_MyInfoR1 #SA_label{
+        justify-content: left;
+
+        width:4em;
+        margin-left:.5em;
+    }
+    .SA_MyUserandVideo .SA_My_Info .SA_MyInfoR1 #SA_myID{
+        justify-content: right;
+
+        flex-grow:1;
+        margin-right:.5em;
+
+    }
+    .SA_MyUserandVideo .SA_My_Info .SA_MyInfoR2 #SA_label{
+        justify-content: left;
+        margin-left:.5em;
+        width:6em;
+    }
+    .SA_MyUserandVideo .SA_My_Info .SA_MyInfoR2 #SA_userName{
+        justify-content: right;
+        flex-grow:1;
+        margin-right:.5em;
+    }
+
+    .SA_current_user_title{
+        background-color: rgb(134, 199, 134);
+        display:flex;
+        font-size:1.5em;
+        font-weight: bold;
+        justify-content: center;
+        align-items: center;
+        height:2em;
+        min-width:35em;
+        margin-top:1.5em;
+    }
+
+    .SA_current_user_list{
+        background-color: rgb(10, 10, 10);
+        display:flex;
+        flex-wrap:wrap;
+    }
+    .SA_user_item{
+        display:flex;
+        margin-left:auto;
+        margin-right:auto;
+        margin-top:.5em;
+        margin-bottom:.5em;
+        border-radius: .5em;
+        justify-content: center;
+        align-items: center;
+    }
+    .SA_user_item_name{
+        overflow-x:hidden;
+        overflow-y: hidden;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        background-color: silver;
+        height:2em;
+        width:15em;
+        font-size:.7em;
+        font-weight: bold;
+        padding:.5em;
+        border-radius:.3em;
+
+    }
+
+    .SA_hidden{
+        display:none;
+    }
+    .SA_user_item_hangup{
+        height:1.3em;
+        width:1.5em;
+    }
+    .SA_user_item_call{
+        height:1.25em;
+        width:1.5em;
+    }
+    .SA_user_item_boot{
+        height:1.2em;
+        width:1.2em;
+    }
+    .SA_user_item_loading{
+        height:1.3em;
+        width:1.3em;
+    }
+
+    .SA_Call_Notice{
+        position:fixed;
+        background-color: rgb(6, 5, 65);
+        left:0;
+        right:0;
+        top:0;
+        bottom:0;
+        z-index:2;
+        margin-left:auto;
+        margin-right:auto;
+        margin-top:auto;
+        margin-bottom:auto;
+
+        height:fit-content;
+        width:fit-content;
+        color:white;
+
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex-wrap:wrap;
+        border-radius:1em;
+        padding:1em;
+        font-size:2em;
+    }
+
+    .SA_Call_Notice div {
+        padding:.75em;
+
+    }
+    .SA_Call_Notice .SA_AcceptorReject{
+        display:flex;
+        font-size:1.5em;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    .SA_Call_Notice .SA_AcceptorReject div{
+        display: flex;
+        flex-grow:1;
+    }
+
+    .SA_Call_Notice .SA_Caller{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width:100%;
+        font-weight:bolder;
+    }
+
+    .SA_Call_Notice .SA_Notice{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width:100%;
+        text-decoration: underline;
+    }
+
+    .SA_Call_Notice .SA_AcceptorReject .SA_Accept{
+        background-color: green;
+        padding:.25em;
+        border-radius:.25em;
+        margin:auto;
+    }
+
+    .SA_Call_Notice .SA_AcceptorReject .SA_Reject{
+        background-color: red;
+        padding:.25em;
+        border-radius:.25em;
+        margin:auto;
+    }
+}
+
+

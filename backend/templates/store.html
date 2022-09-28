@@ -1,0 +1,62 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="overlay">
+
+    <div >
+        <span class="menu"><strong>MENU</strong></h1></span>
+    </div>
+    
+</div>
+
+    <div class="row menu_background" style="position:relative;top:25px">
+
+        {% for product in products %}
+
+        <div class="col-lg-4">
+            <img class="thumbnail" src="{{product.imageURL}}">
+            <br>
+            <br>
+            <div class="box-element product" style="border-radius:1%;background-color:rgb(221, 214, 151)">
+                <form>
+                    <h6><strong>{{product.name}}</strong></h6>
+                    <hr style="color:black; height:5px;mix-blend-mode: initial;">
+                    <button data-product={{product.id}} data-action="add" class="btn btn-outline-success add-btn update-cart" onclick="location.href='';return false"><strong>Add to Cart</strong></button>
+                    
+                    <a href="#" class="btn btn-outline-success"><strong>View Details</strong></a>
+                    <h4 style="float:right;">${{product.price}}</h4>
+
+                </form>
+            </div>
+            
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+
+<input name="itemsjson" id="items" value="{{items}}"  style="display:none"></input>
+<input name="itemsjson" id="itemsCk" value="{{itemsCk}}" style="display:none"></input>
+
+
+
+
+
+
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
