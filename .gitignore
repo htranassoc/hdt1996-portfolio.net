@@ -1,2 +1,12 @@
-static
-psql
+/home/htran/Desktop/hdt1996-portfolio.net/static
+/home/htran/Desktop/hdt1996-portfolio.net/psql
+*/node_modules
+*.jpg
+*.png
+*.jfif
+*.zip
+*.mp3
+*.mp4
+*.PNG
+*/__pycache__
+*/migrations
