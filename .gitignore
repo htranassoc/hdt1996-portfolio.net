@@ -10,3 +10,4 @@ psql/
 *.PNG
 */__pycache__/
 */migrations/
+~/
