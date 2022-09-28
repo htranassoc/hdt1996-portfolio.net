@@ -8,13 +8,18 @@ services:
           ipv4_address: 172.18.0.4
     build:
       context: .
+      dockerfile: ./web_services/Dockerfile
     volumes:
-      - .:/webserver
-      - ./static:/vol/web/static
+      - ./web_services:/webserver
+      - static_volume:/vol/web/static
+      - ./server_config.json:/server_config.json
+      - /webserver/media
+      - /webserver/static
     environment:
-      - DEBUG=0
-    command: "bash /scripts/entrypoint.sh"
-      
+      - DEBUG=1
+    command: "/webserver/entrypoint.sh"
+    depends_on:
+      - db
 
   db:
     container_name: dbcontainer
@@ -24,6 +29,8 @@ services:
     image: timescale/timescaledb:latest-pg14
     ports:
       - 5432:5432
+    volumes:
+      - db_vol:/var/lib/postgresql/data
     environment:
       
       POSTGRES_DB: storedb
@@ -45,10 +52,12 @@ services:
       - 80:80
     volumes:
       - ./proxy:/etc/nginx/
-      - ./static:/vol/static
+      - static_volume:/vol/static
       - ./media:/vol/media
-      - ./frontend/build:/vol/react
-
+      - ./web_services/frontend/build:/vol/react
+    depends_on:
+      - web
+      
 networks:
   ht_container_net: 
     driver: bridge
@@ -58,7 +67,6 @@ networks:
           - subnet: 172.18.0.1/16
           
 volumes:
-  db_vol: 
-  static_data:
-
+  static_volume:
+  db_vol:
 
