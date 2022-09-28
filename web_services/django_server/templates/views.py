@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django_apps.store.models import *
 from django_server.utils import cartData
 from django.views import View
-
+import os
 """ def home(request):
 
     data=cartData(request)
@@ -53,6 +53,10 @@ class HomeView(View):
 
         context={}
         react_src = {}
+        for f in os.walk(".././frontend/build/static"):
+            fpath = f.path
+            print(fpath)
+        
         
 
         if slug == '':

@@ -1,4 +1,4 @@
-let destination = "/home/htran/Desktop/192.168.1.17"
+let destination = "/home/htran/Desktop/hdt1996-portfolio.net"
 let host = require(`${destination}/server_config.json`).host
 let domain = require(`${destination}/server_config.json`).domain
 let debug = false
