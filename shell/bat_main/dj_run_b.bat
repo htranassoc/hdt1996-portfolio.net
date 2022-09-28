@@ -1,1 +1,0 @@
-start docker-compose -f C:\Users\hduon\Documents\Portfolio\docker-compose_deploy.yml up --build
