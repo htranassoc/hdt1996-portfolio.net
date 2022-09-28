@@ -1,5 +1,5 @@
-static/
-psql/
+/static/
+/psql/
 */node_modules
 *.jpg
 *.png
