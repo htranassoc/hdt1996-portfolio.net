@@ -11,7 +11,7 @@ services:
       dockerfile: ./web_services/Dockerfile
     volumes:
       - ./web_services:/webserver
-      - ./data/static:/vol/web/static
+      - static_volume:/vol/web/static
       - ./server_config.json:/server_config.json
       - /webserver/media
       - /webserver/static
@@ -52,8 +52,8 @@ services:
       - 80:80
     volumes:
       - ./proxy:/etc/nginx/
-      - ./data/static:/vol/static
-      - ./data/media:/vol/media
+      - static_volume:/vol/static
+      - ./media:/vol/media
       - ./web_services/frontend/build:/vol/react
     depends_on:
       - web

@@ -1,11 +1,11 @@
 from django.shortcuts import render
 from .models import *
-#from rest_framework.response import Response
-#from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
 from django.http import JsonResponse
 from django_server.utils import cartData,guestOrder
 from decimal import Decimal
-from django.views.generic import View
+from django.views import View
 import json
 import datetime
 

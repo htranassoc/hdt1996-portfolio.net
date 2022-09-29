@@ -8,4 +8,3 @@ djangorestframework
 django-cors-headers
 requests
 tzdata
-pandas

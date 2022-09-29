@@ -1,35 +1,63 @@
 from django.shortcuts import render
 from django_apps.store.models import *
 from django_server.utils import cartData
-from django.views.generic import View
+from django.views import View
 import os
-from Utils.py.file_manager import FileManager
-from django.utils.decorators import method_decorator
-from django.views.decorators.csrf import ensure_csrf_cookie, csrf_protect, csrf_exempt
-from rest_framework import status, permissions
-from django_apps.store.models import *
-FS = FileManager()
+""" def home(request):
+
+    data=cartData(request)
+    cartItems=data['cartItems']
+    cartItemsCk=data['cartItemsCk']
+    order=data['order']
+    items=data['items']
+    itemsCk=data['itemsCk']
+    print('pass')
+    try:
+        newcookie=data['newcookie']
+    except:
+        None
+    products=Product.objects.all()
+    try:
+        context={'products':products, 'items':items, 'order':order,'cartItems':cartItems,'cartItemsCk':cartItemsCk,'itemsCk':itemsCk,'newcookie':newcookie}
+    except:
+        context={'products':products, 'items':items, 'order':order,'cartItems':cartItems,'cartItemsCk':cartItemsCk}
+    return render(request, 'home.html' , context)
+
+def login(request):
+
+    data=cartData(request)
+    cartItems=data['cartItems']
+    cartItemsCk=data['cartItemsCk']
+    order=data['order']
+    items=data['items']
+    itemsCk=data['itemsCk']
+    print('pass')
+    try:
+        newcookie=data['newcookie']
+    except:
+        None
+    products=Product.objects.all()
+    try:
+        context={'products':products, 'items':items, 'order':order,'cartItems':cartItems,'cartItemsCk':cartItemsCk,'itemsCk':itemsCk,'newcookie':newcookie}
+    except:
+        context={'products':products, 'items':items, 'order':order,'cartItems':cartItems,'cartItemsCk':cartItemsCk}
+    return render(request, 'login.html' , context) """
+
+
 
 class HomeView(View):
-    model = None
-    permission_classes = (permissions.AllowAny,)
-
-    @method_decorator(csrf_exempt,name="get")
-    def get(self, request, *args, **kwargs):
-        rooturl=str(self.request.build_absolute_uri('/'))
-        url=str(self.request.build_absolute_uri())
+    def get(self,request):
+        rooturl=str(request.build_absolute_uri('/'))
+        url=str(request.build_absolute_uri())
         slug=url.replace(rooturl,'')
 
-
-        js_files=FS.findFilesbyExt(file_type=".js",location="frontend/build/static")
-        css_files=FS.findFilesbyExt(file_type=".css",location="frontend/build/static")
-        for index, i in enumerate(js_files):
-            print(i)
-            js_files[index] = i.replace("frontend/build",'react')
-
-        for index, i in enumerate(css_files):
-            print(i)
-            css_files[index] = i.replace("frontend/build",'react')
+        context={}
+        react_src = {}
+        for f in os.walk(".././frontend/build/static"):
+            fpath = f.path
+            print(fpath)
+        
+        
 
         if slug == '':
             html_template='home.html'
@@ -39,11 +67,8 @@ class HomeView(View):
 
         elif slug == 'react/notes_app/':
             html_template='react_notes.html'
-        
-        print("\n\n",js_files,"\n\n",css_files)
-        context={"main_js":js_files[0],"main_css":css_files[0]}
-        
-        return render(request,html_template,context)
+
+        return render(request, html_template , context)
 
 
 

@@ -1,1 +1,0 @@
-import web_services.django_server.templates.test
