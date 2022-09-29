@@ -1,3 +1,6 @@
 [submodule "Utils"]
 	path = Utils
 	url = git@github.com:hdt1996/Utils.git
+[submodule "web_services/Utils"]
+	path = web_services/Utils
+	url = git@github.com:hdt1996/Utils.git
