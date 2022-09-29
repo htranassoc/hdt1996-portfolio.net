@@ -73,12 +73,25 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://127.0.0.1:3000'
 ]
-
+CORS_ALLOW_HEADERS = [
+    "accept",
+    "accept-encoding",
+    "authorization",
+    "content-type",
+    "dnt",
+    "origin",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+    "cache-control",
+    "credentials",
+    "http-access-control-request-method",
+]
 CSRF_COOKIE_SECURE = False
 CSRF_COOKIE_HTTPONLY = False
 SESSION_COOKIE_SECURE = False
 SESSION_COOKIE_HTTPONLY = False
-SESSION_CCOKIE_DOMAIN = '127.0.0.1'
+SESSION_COOKIE_DOMAIN = '.192.168.1.17'
 ROOT_URLCONF = 'django_server.urls'
 
 

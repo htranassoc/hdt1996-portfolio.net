@@ -5,8 +5,8 @@
 <html>
 
     <head>
-        <link href="/react/static/css/main.css" rel="stylesheet">
-        <!--<link rel="stylesheet" type="text/css" href="{% static 'backend/css/home.css' %}"/> -->
+        <link href="{{main_css}}" rel="stylesheet">
+        <!--<link rel="stylesheet" type="text/css" href="{% static 'django_server/css/home.css' %}"/> -->
         <title>hdt1996 Home Page</title>
     </head>
     <style>
@@ -141,7 +141,7 @@
                 width:100%;
                 justify-content: center;
                 background-color: rgb(24, 23, 23);
-                overflow-x:hidden;
+                
             }
 
             .pj_hidden{
@@ -182,13 +182,9 @@
             .pj_main{
                 display:flex;
                 position:relative;
-                justify-content: center;
-                align-items: center;
                 flex-direction: column;
                 width:var(--pj_main_width);
                 z-index: 1;
-                margin-left:auto;
-                margin-right:auto;
             }
 
             .pj_animate_main{
@@ -621,7 +617,7 @@
                         <div id = "pj_IHD_Row_Col">
                             <h2>About me</h2>
                             <div>
-                                <p>            
+                                <p>      
                                     I am a college alumni from UC Davis with a bachelors in Managerial Economics.
                                     I started my transition to IT by first studying VBA for Microsoft Excell and Windows Automation.
                                     I applied this knowledge to my work as a corporate accountant and automated manual, repetitive tasks.
@@ -630,7 +626,7 @@
                             </div>
                             
                         </div>
-                        <div id="img_wrapper"><img src="{% static 'backend/images/profile_photo.jfif' %}"></img></div>
+                        <div id="img_wrapper"><img src="{% static 'django_server/images/my_photo.jpg' %}"></img></div>
                     </div>
             </div>
 
@@ -671,11 +667,11 @@
                         },100)
 
                     }
-            element.src = "{% static 'backend/images/background.jpg' %}"
+            element.src = "{% static 'django_server/images/background.jpg' %}"
 
             
         </script>
-        <script src="/react/static/js/main.js"></script>>
+        <script src="{{main_js}}"></script>
     </body>
 </html>
 

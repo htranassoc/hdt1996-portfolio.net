@@ -10,8 +10,9 @@ RUN mkdir -p /vol/media
 RUN mkdir -p /vol/react
 RUN mkdir -p /vol/videos
 RUN mkdir -p /etc/nginx/certs
+RUN mkdir -p /cache/nginx
 
-COPY ./media /vol/media
+COPY ./data/media /vol/media
 
 RUN chown -R nginx:nginx /vol/static
 RUN chown -R nginx:nginx /vol/media
