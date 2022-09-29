@@ -10,5 +10,4 @@
 *.PNG
 __pycache__/
 migrations/
-/data/
 ~/
