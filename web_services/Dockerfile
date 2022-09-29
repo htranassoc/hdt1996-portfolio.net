@@ -8,7 +8,7 @@ RUN mkdir /webserver
 COPY ./web_services /webserver
 WORKDIR /webserver
 
-RUN apk add --update --no-cache --virtual .tmp gcc libc-dev linux-headers
+RUN apk add --update --no-cache --virtual .tmp gcc libc-dev linux-headers g++
 RUN pip3 install -r /webserver/requirements.txt
 RUN apk del .tmp
 
