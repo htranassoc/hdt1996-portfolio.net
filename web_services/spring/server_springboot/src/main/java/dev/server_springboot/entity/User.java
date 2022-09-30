@@ -1,4 +1,4 @@
-package htran.server_spring.entity;
+package dev.server_springboot.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

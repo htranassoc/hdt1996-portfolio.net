@@ -1,4 +1,4 @@
-package htran.server_spring.controller;
+package dev.server_springboot.controller;
 
 import java.util.List;
 
@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import htran.server_spring.entity.User;
-import htran.server_spring.exception.ResourceNotFoundException;
-import htran.server_spring.repository.UserRepository;
+import dev.server_springboot.entity.User;
+import dev.server_springboot.exception.ResourceNotFoundException;
+import dev.server_springboot.repository.UserRepository;
 
 @RestController
 @RequestMapping("/api/users")

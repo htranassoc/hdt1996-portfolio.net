@@ -1,10 +1,10 @@
-package htran.server_spring;
+package dev.server_springboot;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ServerSpringApplicationTests {
+class ServerSpringbootApplicationTests {
 
 	@Test
 	void contextLoads() {

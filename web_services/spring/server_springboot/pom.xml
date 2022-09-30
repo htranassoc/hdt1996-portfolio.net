@@ -8,13 +8,13 @@
 		<version>3.0.0-M5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>htran</groupId>
-	<artifactId>server_spring</artifactId>
+	<groupId>dev</groupId>
+	<artifactId>server_springboot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>server_spring</name>
+	<name>server_springboot</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>19</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
