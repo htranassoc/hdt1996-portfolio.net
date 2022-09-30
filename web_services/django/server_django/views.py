@@ -36,7 +36,6 @@ class HomeView(View):
         elif slug == 'react/notes_app/':
             html_template='react_notes.html'
         
-        print("\n\n",js_files,"\n\n",css_files)
         context={"main_js":js_files[0],"main_css":css_files[0]}
         
         return render(request,html_template,context)
