@@ -22,10 +22,10 @@ class HomeView(View):
         js_files=FS.findFilesbyExt(file_type=".js",location="static/frontend/js")
         css_files=FS.findFilesbyExt(file_type=".css",location="static/frontend/css")
         for index, i in enumerate(js_files):
-            js_files[index] = i.replace("static/frontend/js",'react')
+            js_files[index] = i.replace("static/frontend/js",'react/static/js')
 
         for index, i in enumerate(css_files):
-            css_files[index] = i.replace("static/frontend/css",'react')
+            css_files[index] = i.replace("static/frontend/css",'react/static/css')
 
         if slug == '':
             html_template='home.html'
