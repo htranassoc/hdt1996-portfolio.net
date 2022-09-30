@@ -1,6 +1,6 @@
 version: "3.7"
 services:
-  web:
+  django_web:
     user: root
     container_name: wscontainer
     networks:
@@ -8,20 +8,22 @@ services:
           ipv4_address: 172.18.0.4
     build:
       context: .
-      dockerfile: ./web_services/Dockerfile
+      dockerfile: ./web_services/django/Dockerfile
     volumes:
-      - ./web_services:/webserver
+      - ./web_services/django:/webserver
       - ./data/static:/vol/web/static
       - ./conf/server_config.json:/server_config.json
       - /webserver/media
       - /webserver/static
+      - ./web_services/Utils:/webserver/Utils
+      - ./web_frontend/frontend_django/build/static:/webserver/static/frontend
     environment:
       - DEBUG=1
     command: "/webserver/entrypoint.sh"
     depends_on:
-      - db
+      - psql_db
 
-  db:
+  psql_db:
     container_name: dbcontainer
     networks:
       ht_container_net:
@@ -54,9 +56,9 @@ services:
       - ./proxy:/etc/nginx/
       - ./data/static:/vol/static
       - ./data/media:/vol/media
-      - ./web_services/frontend_django/build:/vol/react
+      - ./web_frontend/frontend_django/build:/vol/react
     depends_on:
-      - web
+      - django_web
       
 networks:
   ht_container_net: 

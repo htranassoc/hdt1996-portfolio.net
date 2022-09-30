@@ -5,7 +5,8 @@ RUN apk add bash dos2unix
 
 
 RUN mkdir /webserver
-COPY ./web_services /webserver
+COPY ./web_services/django /webserver
+COPY ./web_services/Utils /webserver/Utils
 WORKDIR /webserver
 
 RUN apk add --update --no-cache --virtual .tmp gcc libc-dev linux-headers g++

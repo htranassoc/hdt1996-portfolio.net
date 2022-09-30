@@ -19,17 +19,13 @@ class HomeView(View):
         rooturl=str(self.request.build_absolute_uri('/'))
         url=str(self.request.build_absolute_uri())
         slug=url.replace(rooturl,'')
-
-
-        js_files=FS.findFilesbyExt(file_type=".js",location="frontend_django/build/static")
-        css_files=FS.findFilesbyExt(file_type=".css",location="frontend_django/build/static")
+        js_files=FS.findFilesbyExt(file_type=".js",location="static/frontend/js")
+        css_files=FS.findFilesbyExt(file_type=".css",location="static/frontend/css")
         for index, i in enumerate(js_files):
-            print(i)
-            js_files[index] = i.replace("frontend_django/build",'react')
+            js_files[index] = i.replace("static/frontend/js",'react')
 
         for index, i in enumerate(css_files):
-            print(i)
-            css_files[index] = i.replace("frontend_django/build",'react')
+            css_files[index] = i.replace("static/frontend/css",'react')
 
         if slug == '':
             html_template='home.html'

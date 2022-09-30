@@ -15,12 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from views import HomeView
+from .views import HomeView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('store/',include('apps_django.store.urls')),
-    path('',include('server_django.templates.urls')),
     path('api/',include('apps_django.users.urls')),
     path('spotify/',include('apps_django.spotify.urls')),
     path('',HomeView.as_view(), name="home"),

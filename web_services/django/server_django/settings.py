@@ -101,7 +101,6 @@ TEMPLATES = [
         'DIRS': \
         [
             os.path.join(BASE_DIR,'server_django/templates'),
-            #os.path.join(BASE_DIR,'frontend_django/build')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -162,8 +161,8 @@ STATICFILES_DIRS=[os.path.join(BASE_DIR,'server_django/static')]
 if DEBUG=="XXX":
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
     STATIC_ROOT = os.path.join(BASE_DIR, "static")
-    REACT_ROOT= os.path.join(BASE_DIR,"frontend_django/build/") 
-    REACTSTATIC_ROOT=os.path.join(BASE_DIR,"frontend_django/build/static")
+    REACT_ROOT= os.path.join(BASE_DIR,"../web_frontend/frontend_django/build/") 
+    REACTSTATIC_ROOT=os.path.join(BASE_DIR,"../web_frontend/frontend_django/build/static")
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES':[
