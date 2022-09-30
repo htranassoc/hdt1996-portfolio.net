@@ -5,10 +5,10 @@ const node = (PORT,peerPORT,wsPORT) => {
   const path = require("path");
   const {ExpressPeerServer} = require("peer");
   const wsServer = require('websocket').server;
-  const host = require('./node_config').host
-  const domain = require('./node_config').domain
-  const debug = require('./node_config').debug
-  const base_dir = require('./node_config').base_dir
+  const host = require('./conf').host
+  const domain = require('./conf').domain
+  const debug = require('./conf').debug
+  const base_dir = require('./conf').base_dir
   
   
   const node_server = express();

@@ -12,7 +12,7 @@ services:
     volumes:
       - ./web_services:/webserver
       - ./data/static:/vol/web/static
-      - ./server_config.json:/server_config.json
+      - ./conf/server_config.json:/server_config.json
       - /webserver/media
       - /webserver/static
     environment:
