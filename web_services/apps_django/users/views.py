@@ -11,7 +11,7 @@ import django.contrib.auth as auth
 from .serializer import Note_Serializer, Room_Serializer, CreateRoomSerializer, UpdateRoomSerializer, UserDataSerializer, VideoSerializer
 from django.views import View
 from datetime import datetime
-from django_server.settings import DEBUG
+from server_django.settings import DEBUG
 
 @method_decorator(ensure_csrf_cookie,name='get')
 class GetCSRFToken(APIView):

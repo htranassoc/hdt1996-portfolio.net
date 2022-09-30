@@ -9,7 +9,7 @@ from .util import *
 from django.conf import settings
 
 from django.shortcuts import render, redirect
-from django_apps.users.models import React_Room
+from apps_django.users.models import React_Room
 class GetAuthURL(APIView):
     def get (self, request):
         scopes = 'user-read-playback-state user-modify-playback-state user-read-currently-playing'

@@ -15,40 +15,25 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-#from django.conf.urls.static import static
-#from django.conf import settings
+from views import HomeView
 
-app_name='backend'
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('store/',include('django_apps.store.urls')),
-    path('',include('django_server.templates.urls')),
-    path('api/',include('django_apps.users.urls')),
-    path('spotify/',include('django_apps.spotify.urls'))
+    path('store/',include('apps_django.store.urls')),
+    path('',include('server_django.templates.urls')),
+    path('api/',include('apps_django.users.urls')),
+    path('spotify/',include('apps_django.spotify.urls')),
+    path('',HomeView.as_view(), name="home"),
+    path('login/',HomeView.as_view(), name="login")
     ]
 
-    #path('react/', TemplateView.as_view(template_name='index.html'),name='react_home'),
-#urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-#urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-"""
-urlpatterns += static(settings.REACT_URL, document_root=settings.REACT_ROOT)
-urlpatterns += static(settings.REACTSTATIC_URL, document_root=settings.REACTSTATIC_ROOT)
- """
 
-
-""" urlpatterns += static(settings.REACTSRC_URL, document_root=settings.REACTSRC_ROOT) """
 '''
+#from django.conf.urls.static import static
+#from django.conf import settings
 if settings.DEBUG:
     urlpatterns += static(
         settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns += static(
         settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-elif getattr(settings, 'FORCE_SERVE_STATIC', False):
-    settings.DEBUG = True
-    urlpatterns += static(
-        settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-    urlpatterns += static(
-        settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-    settings.DEBUG = False
-    print(getattr(settings, 'FORCE_SERVE_STATIC', False))
 '''

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django_apps.store.models import *
+from apps_django.store.models import *
 import json
 
 

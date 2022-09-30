@@ -1,7 +1,7 @@
 from django.apps import AppConfig
 
 class StoreConfig(AppConfig):
-    name = 'django_apps.store'
+    name = 'apps_django.store'
 
     def ready(self):
-        import django_apps.store.signals
+        import apps_django.store.signals

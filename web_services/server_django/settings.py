@@ -45,9 +45,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_apps.store',
-    'django_apps.users',
-    'django_apps.spotify',
+    'apps_django.store',
+    'apps_django.users',
+    'apps_django.spotify',
     'rest_framework',
     'corsheaders',
 ]
@@ -92,7 +92,7 @@ CSRF_COOKIE_HTTPONLY = False
 SESSION_COOKIE_SECURE = False
 SESSION_COOKIE_HTTPONLY = False
 SESSION_COOKIE_DOMAIN = '.192.168.1.17'
-ROOT_URLCONF = 'django_server.urls'
+ROOT_URLCONF = 'server_django.urls'
 
 
 TEMPLATES = [
@@ -100,8 +100,8 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': \
         [
-            os.path.join(BASE_DIR,'django_server/templates'),
-            #os.path.join(BASE_DIR,'frontend/build')
+            os.path.join(BASE_DIR,'server_django/templates'),
+            #os.path.join(BASE_DIR,'frontend_django/build')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -115,7 +115,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'django_server.wsgi.application'
+WSGI_APPLICATION = 'server_django.wsgi.application'
 
 DATABASES = {
     'default': {
@@ -154,7 +154,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 STATIC_URL='/static/'
 STATIC_ROOT='/vol/web/static'
-STATICFILES_DIRS=[os.path.join(BASE_DIR,'django_server/static')]
+STATICFILES_DIRS=[os.path.join(BASE_DIR,'server_django/static')]
 #USER_MEDIA_ROOT = '/vol/web/media'
 #USER_MEDIA_URL='/media/'
 
@@ -162,8 +162,8 @@ STATICFILES_DIRS=[os.path.join(BASE_DIR,'django_server/static')]
 if DEBUG=="XXX":
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
     STATIC_ROOT = os.path.join(BASE_DIR, "static")
-    REACT_ROOT= os.path.join(BASE_DIR,"frontend/build/") 
-    REACTSTATIC_ROOT=os.path.join(BASE_DIR,"frontend/build/static")
+    REACT_ROOT= os.path.join(BASE_DIR,"frontend_django/build/") 
+    REACTSTATIC_ROOT=os.path.join(BASE_DIR,"frontend_django/build/static")
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES':[
