@@ -54,7 +54,7 @@ services:
       - ./proxy:/etc/nginx/
       - ./data/static:/vol/static
       - ./data/media:/vol/media
-      - ./web_services/frontend/build:/vol/react
+      - ./web_services/frontend_django/build:/vol/react
     depends_on:
       - web
       
