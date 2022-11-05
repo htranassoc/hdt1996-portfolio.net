@@ -1,0 +1,74 @@
+version: "3.7"
+services:
+  django_web:
+    user: root
+    container_name: wscontainer
+    networks:
+      ht_container_net:
+          ipv4_address: 172.18.0.4
+    build:
+      context: .
+      dockerfile: ./web_services/django/Dockerfile
+    volumes:
+      - ./web_services/django:/webserver
+      - ./data/static:/vol/web/static
+      - ./conf/server_config.json:/server_config.json
+      - /webserver/media
+      - /webserver/static
+      - ./web_services/Utils:/webserver/Utils
+      - ./web_frontend/frontend_django/build/static:/webserver/static/frontend
+    environment:
+      - DEBUG=1
+    command: "/webserver/entrypoint.sh"
+    depends_on:
+      - psql_db
+
+  psql_db:
+    container_name: dbcontainer
+    networks:
+      ht_container_net:
+          ipv4_address: 172.18.0.3
+    image: timescale/timescaledb:latest-pg14
+    ports:
+      - 5432:5432
+    volumes:
+      - db_vol:/var/lib/postgresql/data
+    environment:
+      
+      POSTGRES_DB: storedb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: MrPho1219@
+
+  proxy:
+    user: root
+    container_name: proxycontainer
+    networks:
+      ht_container_net:
+          ipv4_address: 172.18.0.2
+    build:
+      context: .
+      dockerfile: ./proxy/Dockerfile
+    ports:
+      - 8001:8001
+      - 443:443
+      - 80:80
+    volumes:
+      - ./proxy:/etc/nginx/
+      - ./data/static:/vol/static
+      - ./data/media:/vol/media
+      - ./web_frontend/frontend_django/build:/vol/react
+    depends_on:
+      - django_web
+      
+networks:
+  ht_container_net: 
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+          - subnet: 172.18.0.1/16
+          
+volumes:
+  static_volume:
+  db_vol:
+

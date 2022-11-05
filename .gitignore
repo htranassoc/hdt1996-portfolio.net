@@ -1,6 +1,6 @@
 /static/
 /psql/
-*/node_modules
+node_modules/
 *.jpg
 *.png
 *.jfif
@@ -10,4 +10,5 @@
 *.PNG
 __pycache__/
 migrations/
+/data/
 ~/

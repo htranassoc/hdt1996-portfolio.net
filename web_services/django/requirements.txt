@@ -1,0 +1,11 @@
+uWSGI
+django==4.0.6
+emoji
+regex
+psycopg2-binary
+Pillow
+djangorestframework
+django-cors-headers
+requests
+tzdata
+pandas
